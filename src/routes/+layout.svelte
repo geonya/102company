@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class="min-h-[500vh] bg-fixed bg-left text-base-300"
+	class="bg-fixed bg-left text-base-300"
 	style="background-image:url(/images/bg.jpg)"
 >
 	<header
@@ -24,7 +24,9 @@
 			<ul class="" />
 			<ul class="">
 				<li>
-					<h2 class="text-lg font-medium">102 Company</h2>
+					<h2 class="text-lg font-medium">
+						<a href="/">102 Company</a>
+					</h2>
 				</li>
 			</ul>
 			<ul class="justify-self-end pr-5">
@@ -36,7 +38,7 @@
 			</ul>
 		</nav>
 	</header>
-	<main class="main py-20">
+	<main class="main">
 		<slot />
 	</main>
 	<footer
