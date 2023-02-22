@@ -15,6 +15,9 @@ const config = {
 			screens: {
 				xs: '300px',
 			},
+			gridTemplateRows: {
+				55: 'repeat(5, minmax(16, 1fr))',
+			},
 		},
 	},
 

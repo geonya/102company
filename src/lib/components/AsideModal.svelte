@@ -4,7 +4,7 @@
 	export let open: boolean;
 
 	function handleExitButtonClick() {
-		open = !open;
+		open = false;
 	}
 </script>
 
@@ -27,4 +27,9 @@
 			<Icon src={X} class="h-7 w-7" />
 		</button>
 	</aside>
+	<div
+		class=" fixed top-0 left-0 h-screen w-full"
+		on:click={handleExitButtonClick}
+		on:keypress={handleExitButtonClick}
+	/>
 {/if}

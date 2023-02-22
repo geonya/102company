@@ -16,7 +16,11 @@
 		@apply scale-110;
 	}
 
-	input.clickBox:checked + .main-project-image > .main-project-title > h3 {
+	.main-project-title {
+	@apply invisible;
+	}
+
+	input.click-box:checked + .main-project-image > .main-project-title {
 		@apply visible;
 	}
 }
