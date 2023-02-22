@@ -1,5 +1,9 @@
+<script lang="ts">
+
+
+
 <div
-	class="mx-auto h-screen snap-y snap-mandatory overflow-scroll xs:px-3 md:px-12"
+	class="xs:px-3 mx-auto h-screen snap-y snap-mandatory overflow-scroll md:px-12"
 >
 	<div class="mx-auto grid h-full w-full max-w-7xl place-content-center">
 		<h1 class="mb-32 text-7xl tracking-widest">하나의 공간, 하나의 이해</h1>
