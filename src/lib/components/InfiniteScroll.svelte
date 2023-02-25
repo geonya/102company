@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { createEventDispatcher, onDestroy, SvelteComponent } from 'svelte';
 
-	export let threshold = 300;
-	export let elementScroll: HTMLElement;
+	export let threshold = 100;
+	export let elementScroll: HTMLElement | null;
 	export let hasMore = true;
 
 	const dispatch = createEventDispatcher();
@@ -18,11 +18,9 @@
 			}
 		}
 	}
-
 	const onScroll = (e: Event) => {
 		const { scrollHeight, clientHeight, scrollTop } = e.target as HTMLElement;
 		const offset = scrollHeight - clientHeight - scrollTop;
-		console.log(offset, threshold);
 		if (offset <= threshold) {
 			if (!isLoadMore && hasMore) {
 				dispatch('loadmore');

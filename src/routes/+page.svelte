@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { InifiniteScroll } from '$lib/components';
-	import AsideModal from '$lib/components/AsideModal.svelte';
 	import { arrayOf2Groups, loadStaticImages } from '$lib/utils';
 	import { onDestroy, onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 
 	let sectionElement: HTMLElement;
 	let page = 0;
 	let images: string[][] = [];
 	let newImages: string[][] = [];
+	let loading = false;
 
 	const fetchData = async (page: number) => {
 		const newData = arrayOf2Groups(
@@ -18,9 +17,9 @@
 	};
 
 	const handleLoadMore = async () => {
-		console.log('loadmore');
-
+		loading = true;
 		newImages = await fetchData(page);
+		loading = false;
 	};
 
 	$: images = [...images, ...newImages];
@@ -31,15 +30,15 @@
 			1,
 		);
 	});
+
+	$: console.log(loading);
 </script>
 
 <section
 	bind:this={sectionElement}
-	class="h-screen snap-y snap-mandatory overflow-scroll xs:px-3 md:px-10 lg:px-20"
+	class="h-screen snap-y overflow-scroll xs:px-3 md:px-10 lg:px-32"
 >
-	<article
-		class="grid h-full w-full snap-start snap-normal place-content-center "
-	>
+	<article class="grid h-full snap-start place-content-center">
 		<div
 			class="relative grid h-full place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat py-10 px-28 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:min-h-[400px] xs:min-w-[300px] md:min-h-[700px] md:min-w-[500px]"
 			style="background-image:url(/images/hero2.jpg)"
@@ -75,10 +74,7 @@
 		</div>
 	</article>
 	{#each images as group, i}
-		<article
-			transition:fade
-			class="relative grid h-screen w-full snap-start snap-normal grid-rows-2 gap-4 overflow-hidden py-20"
-		>
+		<article class="relative grid h-full snap-start grid-rows-2 py-20">
 			<div class={'absolute top-24' + (i % 2 === 0 ? ' right-5' : ' left-5')}>
 				<button
 					class={'flex items-center rounded-md px-2 py-1 opacity-50 hover:cursor-pointer hover:text-base-200 hover:opacity-100 ' +
@@ -109,10 +105,10 @@
 			{#each group as image, j}
 				<label
 					for="clickBox{i + '-' + j}"
-					class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-3 px-3 py-2'}
+					class={' row-span-1 grid h-full w-full cursor-pointer grid-cols-3 justify-items-center px-3 py-2'}
 				>
 					<div
-						class={'main-project-wrapper relative col-span-2 h-full w-full max-w-[800px] overflow-hidden rounded-md' +
+						class={'main-project-wrapper just relative col-span-2 h-full min-h-[300px] w-full max-w-[500px] overflow-hidden rounded-md' +
 							((j + i) % 2 === 0 ? ' col-start-1' : ' col-start-2 ')}
 					>
 						<input
@@ -130,16 +126,16 @@
 					</div>
 				</label>
 			{/each}
-			<InifiniteScroll
-				elementScroll={sectionElement}
-				hasMore={newImages.length > 0}
-				threshold={100}
-				on:loadmore={() => {
-					console.log('loadmore callback');
-					page++;
-					handleLoadMore();
-				}}
-			/>
 		</article>
 	{/each}
+
+	<InifiniteScroll
+		elementScroll={null}
+		hasMore={newImages.length > 0}
+		threshold={100}
+		on:loadmore={() => {
+			page++;
+			handleLoadMore();
+		}}
+	/>
 </section>

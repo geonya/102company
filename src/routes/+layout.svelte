@@ -4,28 +4,40 @@
 	import AsideModal from '../lib/components/AsideModal.svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
 
-	let open: boolean;
-	$: open = false;
+	let open = false;
 	let isFooterOpen = false;
-	const footerBottom = tweened(-436, {
-		duration: 500,
+
+	let screenHeight: number;
+	let footerHeight: number;
+	let footerElement: HTMLElement;
+
+	$: footerTop = tweened(screenHeight - 64, {
+		duration: 400,
 		easing: cubicInOut,
 	});
 	const handleFooterToggle = () => {
 		if (isFooterOpen) {
-			footerBottom.set(-436);
+			footerTop.set(screenHeight - 64);
 			isFooterOpen = false;
 		} else {
 			isFooterOpen = true;
-			footerBottom.set(0);
+			footerTop.set(screenHeight - footerHeight);
 		}
 	};
 	const handleMenuButtonClick = () => {
 		open = true;
 	};
+
+	onMount(() => {
+		if (footerElement) {
+			footerHeight = footerElement.offsetHeight;
+		}
+	});
 </script>
 
+<svelte:window bind:innerHeight={screenHeight} />
 <div
 	class="bg-fixed bg-left text-base-300"
 	style="background-image:url(/images/bg.jpg)"
@@ -57,22 +69,25 @@
 		<slot />
 	</main>
 	<div
-		class="fixed left-0 right-0 w-full cursor-pointer rounded-md "
-		style="bottom: {$footerBottom}px"
+		class="fixed left-0 h-full w-full cursor-pointer rounded-md "
+		style="top: {$footerTop}px"
 	>
 		<footer
-			class={'w-full rounded-md bg-base-600 bg-opacity-0 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md xs:h-[500px] lg:h-[350px]' +
+			bind:this={footerElement}
+			class={'rounded-md bg-base-600 bg-opacity-0 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
 				(isFooterOpen ? ' bg-opacity-90' : '')}
 		>
-			<nav
-				class="grid h-full w-full grid-cols-3 grid-rows-55 justify-items-center"
-			>
+			<nav class="h-full w-full">
 				<ul
 					on:click={handleFooterToggle}
 					on:keypress={handleFooterToggle}
-					class="col-span-1 col-start-3 row-span-1 row-start-1 grid  w-full"
+					class="grid h-16 grid-cols-3 items-center justify-items-center"
 				>
-					<li class="mt-1">
+					<li class="col-span-1 col-start-1">
+						<h2 class="font-regular text-lg ">Contact us</h2>
+					</li>
+					<li />
+					<li class="col-span-1 col-start-3">
 						<button
 							class={'transition duration-1000 ' +
 								(isFooterOpen
@@ -96,22 +111,9 @@
 						>
 					</li>
 				</ul>
-				<ul />
-				<ul
-					class="col-span-1 col-start-1 row-span-1 row-start-1 h-full  
-				"
-				>
-					<li class=" grid h-full w-full cursor-pointer place-content-center">
-						<h2 class="font-regular text-lg ">Contact us</h2>
-					</li>
-				</ul>
-				<ul
-					class="col-span-full col-start-1 row-span-4 row-start-2 grid h-full w-full "
-				>
-					<form
-						action=""
-						class="bg-greed-400 grid h-full w-full grid-rows-3 p-5 xs:grid-cols-1 lg:grid-cols-2"
-					>
+
+				<ul class="grid h-full w-full">
+					<form action="" class="">
 						<div class="block">
 							<label for="name"
 								>상호
