@@ -10,6 +10,8 @@
 	let images: string[][] = [];
 	let newImages: string[][] = [];
 	let loading = false;
+	let scrollY = 0;
+	let bannerElement: HTMLElement;
 
 	const fetchData = async (page: number) => {
 		const newData = arrayOf2Groups(
@@ -24,6 +26,15 @@
 		loading = false;
 	};
 
+	const handleScrollDown = () => {
+		if (bannerElement) {
+			sectionElement.scrollTo({
+				top: bannerElement.scrollHeight,
+				behavior: 'smooth',
+			});
+		}
+	};
+
 	$: images = [...images, ...newImages];
 
 	onMount(async () => {
@@ -32,17 +43,20 @@
 			1,
 		);
 	});
-
-	$: console.log(loading);
 </script>
+
+<svelte:window bind:scrollY />
 
 <section
 	bind:this={sectionElement}
-	class="h-screen snap-y overflow-scroll xs:px-3 md:px-10 lg:px-44"
+	class="h-screen snap-y snap-mandatory overflow-scroll xs:px-3 md:px-10 lg:px-44"
 >
-	<article class="grid h-full min-h-screen snap-start place-content-center">
+	<article
+		bind:this={bannerElement}
+		class="grid h-full min-h-screen w-full snap-start place-content-center "
+	>
 		<div
-			class="relative grid min-h-[500px] place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat py-10 px-28 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:max-w-[300px] md:max-w-5xl"
+			class="relative grid min-h-screen place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat py-10 px-28 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:h-full xs:w-full md:max-w-5xl"
 			style="background-image:url(/images/hero2.jpg)"
 		>
 			<h1 class="font-regular text-3xl">Lorem Ipsum</h1>
@@ -67,11 +81,24 @@
 				</p>
 			</div>
 
-			<div class="">
-				<button
-					class="rounded-md bg-base-500 px-4 py-2 text-base-200 hover:opacity-90 "
-					>Contact</button
-				>
+			<div class="flex w-full justify-center">
+				<button class="hover:opacity-90 " on:click={handleScrollDown}>
+					<svg
+						class="h-9 w-9"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="0.5"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+						/>
+					</svg>
+				</button>
 			</div>
 		</div>
 	</article>
