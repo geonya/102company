@@ -1,23 +1,44 @@
 <script lang="ts">
+	import { InifiniteScroll } from '$lib/components';
+	import AsideModal from '$lib/components/AsideModal.svelte';
 	import { arrayOf2Groups, loadStaticImages } from '$lib/utils';
 	import { onDestroy, onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
-	let images: string[] = [];
-	let images2GroupArray: string[][] = [];
+	let sectionElement: HTMLElement;
+	let page = 0;
+	let images: string[][] = [];
+	let newImages: string[][] = [];
+
+	const fetchData = async (page: number) => {
+		const newData = arrayOf2Groups(
+			await loadStaticImages('projects/seum'),
+		).slice(page, page + 1);
+		return newData;
+	};
+
+	const handleLoadMore = async () => {
+		console.log('loadmore');
+
+		newImages = await fetchData(page);
+	};
+
+	$: images = [...images, ...newImages];
 
 	onMount(async () => {
-		images = await loadStaticImages('projects/seum');
-		images2GroupArray = arrayOf2Groups(images);
+		newImages = arrayOf2Groups(await loadStaticImages('projects/seum')).slice(
+			0,
+			1,
+		);
 	});
 </script>
 
-<div />
-
 <section
+	bind:this={sectionElement}
 	class="h-screen snap-y snap-mandatory overflow-scroll xs:px-3 md:px-10 lg:px-20"
 >
 	<article
-		class="grid h-full w-full snap-start snap-always place-content-center "
+		class="grid h-full w-full snap-start snap-normal place-content-center "
 	>
 		<div
 			class="relative grid h-full place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat py-10 px-28 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:min-h-[400px] xs:min-w-[300px] md:min-h-[700px] md:min-w-[500px]"
@@ -53,9 +74,10 @@
 			</div>
 		</div>
 	</article>
-	{#each images2GroupArray as group, i}
+	{#each images as group, i}
 		<article
-			class="relative grid h-screen w-full snap-start snap-always grid-rows-2 overflow-hidden py-20"
+			transition:fade
+			class="relative grid h-screen w-full snap-start snap-normal grid-rows-2 gap-4 overflow-hidden py-20"
 		>
 			<div class={'absolute top-24' + (i % 2 === 0 ? ' right-5' : ' left-5')}>
 				<button
@@ -108,6 +130,16 @@
 					</div>
 				</label>
 			{/each}
+			<InifiniteScroll
+				elementScroll={sectionElement}
+				hasMore={newImages.length > 0}
+				threshold={100}
+				on:loadmore={() => {
+					console.log('loadmore callback');
+					page++;
+					handleLoadMore();
+				}}
+			/>
 		</article>
 	{/each}
 </section>

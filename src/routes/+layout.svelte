@@ -4,6 +4,7 @@
 	import AsideModal from '../lib/components/AsideModal.svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
+
 	let open: boolean;
 	$: open = false;
 	let isFooterOpen = false;
@@ -20,7 +21,6 @@
 			footerBottom.set(0);
 		}
 	};
-
 	const handleMenuButtonClick = () => {
 		open = true;
 	};
