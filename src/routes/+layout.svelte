@@ -74,7 +74,7 @@
 	>
 		<footer
 			bind:this={footerElement}
-			class={'rounded-md bg-base-600 bg-opacity-0 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
+			class={'min-h-[300px] rounded-md bg-base-600 bg-opacity-0 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
 				(isFooterOpen ? ' bg-opacity-90' : '')}
 		>
 			<nav class="h-full w-full">
@@ -112,7 +112,7 @@
 					</li>
 				</ul>
 
-				<ul class="grid h-full w-full">
+				<!-- <ul class="grid h-full w-full">
 					<form action="" class="">
 						<div class="block">
 							<label for="name"
@@ -163,7 +163,7 @@
 							</label>
 						</div>
 					</form>
-				</ul>
+				</ul> -->
 			</nav>
 		</footer>
 		<AsideModal bind:open />

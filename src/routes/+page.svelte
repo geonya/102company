@@ -2,6 +2,8 @@
 	import { InifiniteScroll } from '$lib/components';
 	import { arrayOf2Groups, loadStaticImages } from '$lib/utils';
 	import { onDestroy, onMount } from 'svelte';
+	import { cubicInOut, elasticInOut } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
 
 	let sectionElement: HTMLElement;
 	let page = 0;
@@ -36,11 +38,11 @@
 
 <section
 	bind:this={sectionElement}
-	class="h-screen snap-y overflow-scroll xs:px-3 md:px-10 lg:px-32"
+	class="h-screen snap-y overflow-scroll xs:px-3 md:px-10 lg:px-44"
 >
-	<article class="grid h-full snap-start place-content-center">
+	<article class="grid h-full min-h-screen snap-start place-content-center">
 		<div
-			class="relative grid h-full place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat py-10 px-28 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:min-h-[400px] xs:min-w-[300px] md:min-h-[700px] md:min-w-[500px]"
+			class="relative grid min-h-[500px] place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat py-10 px-28 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:max-w-[300px] md:max-w-5xl"
 			style="background-image:url(/images/hero2.jpg)"
 		>
 			<h1 class="font-regular text-3xl">Lorem Ipsum</h1>
@@ -104,11 +106,16 @@
 			</div>
 			{#each group as image, j}
 				<label
+					in:fade={{
+						duration: 1000,
+						delay: 700 * (j + 0.5),
+						easing: cubicInOut,
+					}}
 					for="clickBox{i + '-' + j}"
 					class={' row-span-1 grid h-full w-full cursor-pointer grid-cols-3 justify-items-center px-3 py-2'}
 				>
 					<div
-						class={'main-project-wrapper just relative col-span-2 h-full min-h-[300px] w-full max-w-[500px] overflow-hidden rounded-md' +
+						class={'main-project-wrapper just relative col-span-2 h-full w-full max-w-[640px] overflow-hidden rounded-md' +
 							((j + i) % 2 === 0 ? ' col-start-1' : ' col-start-2 ')}
 					>
 						<input
