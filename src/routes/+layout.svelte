@@ -7,13 +7,13 @@
 	import { onMount } from 'svelte';
 
 	let open = false;
-	let isFooterOpen = false;
+	let isFooterOpen = true;
 
 	let screenHeight: number;
 	let footerHeight: number;
 	let footerElement: HTMLElement;
 
-	$: footerTop = tweened(screenHeight - 64, {
+	$: footerTop = tweened(screenHeight - footerHeight, {
 		duration: 400,
 		easing: cubicInOut,
 	});
@@ -22,8 +22,8 @@
 			footerTop.set(screenHeight - 64);
 			isFooterOpen = false;
 		} else {
-			isFooterOpen = true;
 			footerTop.set(screenHeight - footerHeight);
+			isFooterOpen = true;
 		}
 	};
 	const handleMenuButtonClick = () => {
@@ -56,7 +56,7 @@
 					</h2>
 				</li>
 			</ul>
-			<ul class="justify-self-end pr-5">
+			<ul class="pr-5">
 				<li>
 					<button class="p-3" on:click={handleMenuButtonClick}
 						><Icon class="h-6 w-6" src={Menu} /></button
@@ -74,20 +74,19 @@
 	>
 		<footer
 			bind:this={footerElement}
-			class={'min-h-[300px] rounded-md bg-base-600 bg-opacity-0 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
+			class={'rounded-md bg-base-600 bg-opacity-0 p-2 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
 				(isFooterOpen ? ' bg-opacity-90' : '')}
 		>
-			<nav class="h-full w-full">
+			<nav class=" grid h-full w-full pb-3">
 				<ul
 					on:click={handleFooterToggle}
 					on:keypress={handleFooterToggle}
-					class="grid h-16 grid-cols-3 items-center justify-items-center"
+					class="grid h-12 grid-cols-2"
 				>
-					<li class="col-span-1 col-start-1">
-						<h2 class="font-regular text-lg ">Contact us</h2>
+					<li class="w-full">
+						<h2 class="text-lg font-light">Contact us</h2>
 					</li>
-					<li />
-					<li class="col-span-1 col-start-3">
+					<li class="flex h-full w-full items-center justify-end ">
 						<button
 							class={'transition duration-1000 ' +
 								(isFooterOpen
@@ -111,59 +110,48 @@
 						>
 					</li>
 				</ul>
-
-				<!-- <ul class="grid h-full w-full">
-					<form action="" class="">
-						<div class="block">
-							<label for="name"
-								>상호
-								<input
-									name="name"
-									type="text"
-									placeholder="상호"
-									class="w-full max-w-lg rounded-md p-2 opacity-90 shadow-md"
-								/></label
-							>
-							<label class="block" for="name"
-								>상호
-								<input
-									name="name"
-									type="text"
-									placeholder="상호"
-									class="w-full max-w-lg rounded-md p-2 opacity-90 shadow-md"
-								/></label
-							>
-						</div>
-						<div class="">
-							<label for="name">상호</label>
+				<ul class="grid grid-cols-2 justify-items-center gap-10">
+					<div class="grid w-full max-w-md gap-1">
+						<label for="name" class="">
+							<span class="text-xs">Name</span>
 							<input
-								name="name"
+								class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
 								type="text"
-								placeholder="상호"
-								class="w-full rounded-md p-2 opacity-90 shadow-md"
+								id="name"
+								name="name"
 							/>
-							<label for="name">상호</label>
+						</label>
+						<label for="email">
+							<span class="text-xs">Email</span>
+						</label>
+						<input
+							class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
+							type="email"
+							id="email"
+							name="email"
+						/>
+					</div>
+					<div class="grid w-full max-w-md gap-1">
+						<label for="name" class="">
+							<span class="text-xs">Phone</span>
 							<input
-								name="name"
+								class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
 								type="text"
-								placeholder="상호"
-								class="w-full rounded-md p-2 opacity-90 shadow-md"
+								id="name"
+								name="name"
 							/>
-						</div>
-						<div
-							class="col-span-full row-span-2 flex h-full items-center justify-center p-2"
-						>
-							<label class="h-full w-full" for="detail"
-								><span class="block">문의 내용</span>
-								<textarea
-									class="h-full w-full rounded-md px-10 py-2"
-									name="문의 내용"
-									id=""
-								/>
-							</label>
-						</div>
-					</form>
-				</ul> -->
+						</label>
+						<label for="email">
+							<span class="text-xs">Detail</span>
+						</label>
+						<input
+							class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
+							type="email"
+							id="email"
+							name="email"
+						/>
+					</div>
+				</ul>
 			</nav>
 		</footer>
 		<AsideModal bind:open />
