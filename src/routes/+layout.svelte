@@ -48,7 +48,7 @@
 />
 <div
 	class="bg-fixed bg-left text-base-300"
-	style="background-image:url(/images/bg.jpg)"
+	style="background-image:url(/bg.jpg)"
 >
 	<header
 		class="fixed top-0 left-0 right-0 z-10 h-16 shadow-sm backdrop-blur-md"

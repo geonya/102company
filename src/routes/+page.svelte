@@ -57,7 +57,7 @@
 	>
 		<div
 			class="relative grid min-h-screen place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat px-5 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:h-full xs:w-full md:max-w-5xl"
-			style="background-image:url(/images/hero2.jpg)"
+			style="background-image:url(/hero2.jpg)"
 		>
 			<h1 class="font-regular text-3xl">Lorem Ipsum</h1>
 			<div>
