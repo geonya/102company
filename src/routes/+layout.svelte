@@ -5,6 +5,7 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
+	import { BAR_HEIGHT } from '$lib/constants';
 
 	let open = false;
 	let isFooterOpen = false;
@@ -13,14 +14,14 @@
 	let footerHeight: number;
 	let footerElement: HTMLElement;
 
-	$: footerTop = tweened(screenHeight - 64, {
+	$: footerTop = tweened(screenHeight - BAR_HEIGHT, {
 		duration: 400,
 		easing: cubicInOut,
 	});
 
 	const handleFooterToggle = () => {
 		if (isFooterOpen) {
-			footerTop.set(screenHeight - 64);
+			footerTop.set(screenHeight - BAR_HEIGHT);
 			isFooterOpen = false;
 		} else {
 			footerTop.set(screenHeight - footerHeight);
@@ -51,7 +52,8 @@
 	style="background-image:url(/bg.jpg)"
 >
 	<header
-		class="fixed top-0 left-0 right-0 z-10 h-16 shadow-sm backdrop-blur-md"
+		class="fixed top-0 left-0 right-0 z-10 shadow-sm backdrop-blur-md"
+		style="height: {BAR_HEIGHT}px"
 	>
 		<nav
 			class="grid h-full w-full grid-cols-3 items-center justify-items-center"
@@ -59,7 +61,7 @@
 			<ul class="" />
 			<ul class="">
 				<li>
-					<h2 class="text-lg font-medium">
+					<h2 class="font-regular">
 						<a href="/">102 Company</a>
 					</h2>
 				</li>
@@ -89,12 +91,13 @@
 				<ul
 					on:click={handleFooterToggle}
 					on:keypress={handleFooterToggle}
-					class="grid h-12 grid-cols-2"
+					class="grid grid-cols-2"
+					style="height: {BAR_HEIGHT}px"
 				>
 					<li class="w-full">
-						<h2 class="text-lg font-light">Contact us</h2>
+						<h2 class="text-sm font-light">Contact us</h2>
 					</li>
-					<li class="flex h-full w-full items-center justify-end ">
+					<li class="flex h-full w-full items-center justify-end pb-5">
 						<button
 							class={'transition duration-1000 ' +
 								(isFooterOpen
@@ -107,7 +110,7 @@
 								stroke-width="1.5"
 								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6"
+								class="h-5 w-5"
 							>
 								<path
 									d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
