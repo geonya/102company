@@ -13,10 +13,13 @@
 	let scrollY = 0;
 	let bannerElement: HTMLElement;
 
+	$: console.log(images);
+
 	const fetchData = async (page: number) => {
-		const newData = arrayOf2Groups(
-			await loadStaticImages('projects/seum'),
-		).slice(page, page + 1);
+		const newData = arrayOf2Groups(await loadStaticImages('')).slice(
+			page,
+			page + 1,
+		);
 		return newData;
 	};
 
@@ -38,10 +41,7 @@
 	$: images = [...images, ...newImages];
 
 	onMount(async () => {
-		newImages = arrayOf2Groups(await loadStaticImages('projects/seum')).slice(
-			0,
-			1,
-		);
+		newImages = arrayOf2Groups(await loadStaticImages('')).slice(0, 1);
 	});
 </script>
 
@@ -56,7 +56,7 @@
 		class="grid h-full min-h-screen w-full snap-start place-content-center "
 	>
 		<div
-			class="relative grid min-h-screen place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat py-10 px-28 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:h-full xs:w-full md:max-w-5xl"
+			class="relative grid min-h-screen place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat px-5 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:h-full xs:w-full md:max-w-5xl"
 			style="background-image:url(/images/hero2.jpg)"
 		>
 			<h1 class="font-regular text-3xl">Lorem Ipsum</h1>

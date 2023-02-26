@@ -1,12 +1,11 @@
 export const loadStaticImages = async (filter?: string) => {
 	let images: string[] = [];
-	const modules = import.meta.glob('../../src/images/**/*.jpg');
+	const modules = import.meta.glob('/static/images/projects/*.jpg');
 	for (const path in modules) {
 		let imagePath = await modules[path]().then((value) => {
 			return (value as { default: string }).default;
 		});
 		imagePath = imagePath.replace('/static', '').replace(' ', '');
-
 		images.push(imagePath);
 	}
 	if (filter) {

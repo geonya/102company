@@ -17,6 +17,7 @@
 		duration: 400,
 		easing: cubicInOut,
 	});
+
 	const handleFooterToggle = () => {
 		if (isFooterOpen) {
 			footerTop.set(screenHeight - 64);
