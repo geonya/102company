@@ -7,13 +7,13 @@
 	import { onMount } from 'svelte';
 
 	let open = false;
-	let isFooterOpen = true;
+	let isFooterOpen = false;
 
 	let screenHeight: number;
 	let footerHeight: number;
 	let footerElement: HTMLElement;
 
-	$: footerTop = tweened(screenHeight - footerHeight, {
+	$: footerTop = tweened(screenHeight - 64, {
 		duration: 400,
 		easing: cubicInOut,
 	});
@@ -27,7 +27,7 @@
 		}
 	};
 	const handleMenuButtonClick = () => {
-		open = true;
+		open = !open;
 	};
 
 	onMount(() => {
@@ -37,7 +37,14 @@
 	});
 </script>
 
-<svelte:window bind:innerHeight={screenHeight} />
+<svelte:window
+	bind:innerHeight={screenHeight}
+	on:resize={() => {
+		if (isFooterOpen) {
+			handleFooterToggle();
+		}
+	}}
+/>
 <div
 	class="bg-fixed bg-left text-base-300"
 	style="background-image:url(/images/bg.jpg)"
@@ -56,7 +63,7 @@
 					</h2>
 				</li>
 			</ul>
-			<ul class="pr-5">
+			<ul class="justify-self-end pr-3">
 				<li>
 					<button class="p-3" on:click={handleMenuButtonClick}
 						><Icon class="h-6 w-6" src={Menu} /></button
@@ -77,7 +84,7 @@
 			class={'rounded-md bg-base-600 bg-opacity-0 p-2 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
 				(isFooterOpen ? ' bg-opacity-90' : '')}
 		>
-			<nav class=" grid h-full w-full pb-3">
+			<nav class=" grid h-full w-full items-center gap-3 px-3 pb-3">
 				<ul
 					on:click={handleFooterToggle}
 					on:keypress={handleFooterToggle}
@@ -132,28 +139,42 @@
 						/>
 					</div>
 					<div class="grid w-full max-w-md gap-1">
-						<label for="name" class="">
+						<label for="phone" class="">
 							<span class="text-xs">Phone</span>
 							<input
 								class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
-								type="text"
-								id="name"
-								name="name"
+								type="number"
+								id="phone"
+								name="phone"
 							/>
 						</label>
-						<label for="email">
+						<label for="inquiry-type" class="text-xs">문의 종류</label>
+						<select id="inquiry-type" name="inquiry-type">
+							<option value="신축">신축</option>
+							<option value="리모델링">리모델링</option>
+							<option value="부분">부분</option>
+							<option value="기타">기타</option>
+						</select>
+					</div>
+				</ul>
+				<ul class="grid grid-cols-2 gap-10">
+					<div class="grid w-full max-w-md gap-1">
+						<label for="detail" class="">
 							<span class="text-xs">Detail</span>
+							<input
+								class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
+								type="text"
+								id="detail"
+								name="detail"
+							/>
 						</label>
-						<input
-							class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
-							type="email"
-							id="email"
-							name="email"
-						/>
+					</div>
+					<div class="h-full bg-red-400">
+						<button class="h-full w-full bg-base-600"> Send </button>
 					</div>
 				</ul>
 			</nav>
 		</footer>
-		<AsideModal bind:open />
 	</div>
+	<AsideModal bind:open />
 </div>
