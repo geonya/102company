@@ -61,7 +61,7 @@
 			<ul class="" />
 			<ul class="">
 				<li>
-					<h2 class="font-regular">
+					<h2 class="font-regular text-sm">
 						<a href="/">102 Company</a>
 					</h2>
 				</li>
@@ -84,20 +84,20 @@
 	>
 		<footer
 			bind:this={footerElement}
-			class={'rounded-md bg-base-600 bg-opacity-0 p-2 shadow-inner backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
+			class={'rounded-md bg-base-600 backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
 				(isFooterOpen ? ' bg-opacity-90' : '')}
 		>
-			<nav class=" grid h-full w-full items-center gap-3 px-3 pb-3">
+			<nav class="h-full w-full items-center">
 				<ul
 					on:click={handleFooterToggle}
 					on:keypress={handleFooterToggle}
-					class="grid grid-cols-2"
+					class="grid w-full grid-cols-2 px-5 pb-1"
 					style="height: {BAR_HEIGHT}px"
 				>
-					<li class="w-full">
+					<li class="flex h-full w-full items-center">
 						<h2 class="text-sm font-light">Contact us</h2>
 					</li>
-					<li class="flex h-full w-full items-center justify-end pb-5">
+					<li class="flex h-full w-full items-center justify-end">
 						<button
 							class={'transition duration-1000 ' +
 								(isFooterOpen
@@ -121,61 +121,90 @@
 						>
 					</li>
 				</ul>
-				<ul class="grid grid-cols-2 justify-items-center gap-10">
-					<div class="grid w-full max-w-md gap-1">
-						<label for="name" class="">
+				<ul class="grid h-full w-full xs:grid-cols-1 lg:grid-cols-2">
+					<li class="self-center px-5 xs:hidden lg:block">
+						<ol class="">
+							<span class="text-lg font-light">Address :</span>
+							<span>경기도 김포시 한강길 123, 3층</span>
+						</ol>
+						<ol>
+							<span class="text-lg font-light">Contact :</span>
+							<span>1234-1234</span>
+						</ol>
+						<ol>
+							<span class="text-lg font-light">Email :</span>
+							<span>102company@gmail.com</span>
+						</ol>
+						<ol>
+							<span class="text-lg font-light">Contact :</span>
+							<span>102company@gmail.com</span>
+						</ol>
+						<ol>
+							<span class="text-lg font-light">Contact :</span>
+							<span>102company@gmail.com</span>
+						</ol>
+						<ol>
+							<span class="text-lg font-light">Contact :</span>
+							<span>102company@gmail.com</span>
+						</ol>
+					</li>
+					<li class="grid h-full w-full grid-flow-dense grid-cols-2">
+						<label for="name" class="px-2 py-2">
 							<span class="text-xs">Name</span>
 							<input
-								class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
+								class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
 								type="text"
 								id="name"
 								name="name"
 							/>
 						</label>
-						<label for="email">
+						<label for="email" class="px-2 py-2">
 							<span class="text-xs">Email</span>
+							<input
+								class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
+								type="email"
+								id="email"
+								name="email"
+							/>
 						</label>
-						<input
-							class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
-							type="email"
-							id="email"
-							name="email"
-						/>
-					</div>
-					<div class="grid w-full max-w-md gap-1">
-						<label for="phone" class="">
+						<label for="phone" class="px-2 py-2">
 							<span class="text-xs">Phone</span>
 							<input
-								class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
+								class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
 								type="number"
 								id="phone"
 								name="phone"
 							/>
 						</label>
-						<label for="inquiry-type" class="text-xs">문의 종류</label>
-						<select id="inquiry-type" name="inquiry-type">
-							<option value="신축">신축</option>
-							<option value="리모델링">리모델링</option>
-							<option value="부분">부분</option>
-							<option value="기타">기타</option>
-						</select>
-					</div>
-				</ul>
-				<ul class="grid grid-cols-2 gap-10">
-					<div class="grid w-full max-w-md gap-1">
-						<label for="detail" class="">
-							<span class="text-xs">Detail</span>
-							<input
-								class="w-full rounded-md px-2 py-1 text-sm text-base-500 shadow-md"
-								type="text"
-								id="detail"
-								name="detail"
-							/>
+						<label for="inquiry-type" class="px-2 py-2">
+							<span class="text-xs">문의 종류</span>
+							<select
+								class="block w-full appearance-none rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md focus:border-blue-500 focus:ring-blue-500"
+							>
+								<option selected value="신축">신축</option>
+								<option value="리모델링">리모델링</option>
+								<option value="부분">부분</option>
+								<option value="기타">기타</option>
+							</select>
 						</label>
-					</div>
-					<div class="h-full bg-red-400">
-						<button class="h-full w-full bg-base-600"> Send </button>
-					</div>
+						<div class="col-span-2 -mt-1 px-2 py-2">
+							<label for="name" class="">
+								<span class="text-xs">Detail</span>
+								<textarea
+									class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
+									id="name"
+									name="name"
+								/>
+							</label>
+							<div class="flex w-full justify-end">
+								<button
+									class="mt-2 rounded-md bg-base-800 bg-opacity-70 px-3 py-2 hover:bg-opacity-100"
+								>
+									Submit
+								</button>
+							</div>
+						</div>
+					</li>
 				</ul>
 			</nav>
 		</footer>

@@ -10,7 +10,8 @@
 - [x] 메뉴 배경 클릭시 닫힘
 - [x] Footer hover event
 - [x] Footer Contact Form
-- [ ] 메인페이지 가로폭 FIX
+- [x] 메인페이지 가로폭 FIX
+- [x] scroll snap
 - [ ] Projects Page Gallery Section
 - [ ] Admin Page
 - [ ] Server/DB Setup

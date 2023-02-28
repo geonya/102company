@@ -40,10 +40,7 @@
 	bind:this={sectionElement}
 	class="h-screen snap-y snap-mandatory overflow-scroll"
 >
-	<div
-		id="reponsibleWidthSet"
-		class="lg:max-w-2lg 3xl:max-w-4xl mx-auto h-full xs:w-full md:max-w-lg xl:max-w-2xl 2xl:max-w-7xl"
-	>
+	<div id="reponsibleWidthSet" class="mx-auto h-full xs:w-full md:max-w-7xl">
 		<article class="h-full min-h-screen w-full snap-start">
 			<div
 				class="relative rounded-md bg-base-600 bg-cover bg-center bg-no-repeat opacity-95 bg-blend-overlay "
@@ -99,7 +96,7 @@
 						class={'flex items-center rounded-md px-3 pt-2 opacity-50 hover:cursor-pointer hover:text-base-200 hover:opacity-100 ' +
 							(i % 2 === 1 ? ' flex-row-reverse' : ' flex-row')}
 					>
-						<div class="flex items-center xs:text-sm md:text-base">
+						<div class="flex items-center xs:text-xs md:text-sm">
 							View Project
 						</div>
 						<div class="mx-1 grid place-content-center pb-1 pt-1.5">
