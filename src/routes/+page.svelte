@@ -3,6 +3,8 @@
 	import { arrayOf2Groups, loadStaticImages } from '$lib/utils';
 	import { onDestroy, onMount } from 'svelte';
 	import { cubicInOut, elasticInOut } from 'svelte/easing';
+	import { element } from 'svelte/internal';
+	import { tweened } from 'svelte/motion';
 	import { fade } from 'svelte/transition';
 
 	let sectionElement: HTMLElement;
@@ -11,8 +13,6 @@
 	let images: string[][] = [];
 	let newImages: string[][] = [];
 	let loading = false;
-	let scrollY = 0;
-	let bannerElement: HTMLElement;
 
 	const fetchData = async (page: number) => {
 		const newData = arrayOf2Groups(await loadStaticImages('')).slice(
@@ -28,15 +28,6 @@
 		loading = false;
 	};
 
-	const handleScrollDown = () => {
-		if (bannerElement) {
-			sectionElement.scrollTo({
-				top: bannerElement.scrollHeight,
-				behavior: 'smooth',
-			});
-		}
-	};
-
 	$: images = [...images, ...newImages];
 
 	onMount(async () => {
@@ -45,60 +36,70 @@
 	});
 </script>
 
-<svelte:window bind:scrollY />
-
-<section bind:this={sectionElement} class="h-screen overflow-scroll">
-	<div class="mx-auto h-full xs:max-w-md md:max-w-lg lg:max-w-2xl">
-		<article
-			bind:this={bannerElement}
-			class="grid h-full min-h-screen w-full grid-rows-3"
-		>
+<section
+	bind:this={sectionElement}
+	class="h-screen snap-y snap-mandatory overflow-scroll"
+>
+	<div
+		id="reponsibleWidthSet"
+		class="lg:max-w-2lg 3xl:max-w-4xl mx-auto h-full xs:w-full md:max-w-lg xl:max-w-2xl 2xl:max-w-7xl"
+	>
+		<article class="h-full min-h-screen w-full snap-start">
 			<div
-				class="relative grid min-h-screen place-content-center space-y-9 rounded-md bg-base-600 bg-cover bg-center bg-no-repeat px-5 text-base-300 opacity-95 bg-blend-overlay shadow-lg xs:h-full xs:w-full md:max-w-5xl"
+				class="relative rounded-md bg-base-600 bg-cover bg-center bg-no-repeat opacity-95 bg-blend-overlay "
 				style="background-image:url(/hero2.jpg)"
 			>
-				<h1 class="font-regular text-3xl">Lorem Ipsum</h1>
-				<div>
-					<p class="text-sm font-light">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex ea commodo consequat. Duis aute irure dolor in
-						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</div>
+				<div
+					class="flex h-full min-h-screen w-full flex-col justify-between px-5 py-24"
+				>
+					<div />
+					<div class="space-y-10">
+						<h1 class="font-regular text-3xl">Lorem Ipsum</h1>
 
-				<div class="flex h-full w-full items-end justify-center">
-					<button class="hover:opacity-90 " on:click={handleScrollDown}>
-						<svg
-							class="h-6 w-6"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="0.5"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-							aria-hidden="true"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
-							/>
-						</svg>
-					</button>
+						<p class="text-sm font-light">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
+
+					<div class="flex h-full w-full items-end justify-center">
+						<button class="hover:opacity-90 ">
+							<svg
+								class="h-6 w-6"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="0.5"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+								/>
+							</svg>
+						</button>
+					</div>
 				</div>
 			</div>
 		</article>
 		{#each images as group, i}
-			<article class="relative grid h-full grid-rows-2 py-20" id="project{i}">
-				<div class={'absolute top-12' + (i % 2 === 0 ? ' right-5' : ' left-5')}>
+			<article
+				class={'relative grid h-full w-full snap-start grid-rows-2 py-20'}
+				id="project{i}"
+			>
+				<div class={'absolute top-20' + (i % 2 === 0 ? ' right-5' : ' left-5')}>
 					<button
-						class={'flex items-center rounded-md px-2 py-1 opacity-50 hover:cursor-pointer hover:text-base-200 hover:opacity-100 ' +
+						class={'flex items-center rounded-md px-3 pt-2 opacity-50 hover:cursor-pointer hover:text-base-200 hover:opacity-100 ' +
 							(i % 2 === 1 ? ' flex-row-reverse' : ' flex-row')}
 					>
-						<div class="flex items-center xs:text-xs md:text-sm">
+						<div class="flex items-center xs:text-sm md:text-base">
 							View Project
 						</div>
 						<div class="mx-1 grid place-content-center pb-1 pt-1.5">
@@ -156,8 +157,6 @@
 		{/each}
 	</div>
 	<InifiniteScroll
-		elId="project3"
-		sectionLength={totalGroup.length}
 		elementScroll={null}
 		hasMore={newImages.length > 0}
 		threshold={100}
