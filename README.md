@@ -12,7 +12,8 @@
 - [x] Footer Contact Form
 - [x] 메인페이지 가로폭 FIX
 - [x] scroll snap
-- [ ] About Page
-- [ ] Projects Page Gallery Section
+- [x] bg / hero image optimization
+- [x] About Page
+- [x] Projects Page Gallery Section
 - [ ] Admin Page
 - [ ] Server/DB Setup
