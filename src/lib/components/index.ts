@@ -1,2 +1,4 @@
-export { default as AsideModal } from './AsideModal.svelte';
-export { default as InifiniteScroll } from './InfiniteScroll.svelte';
+import AsideModal from './AsideModal.svelte';
+import InfiniteScroll from './InfiniteScroll.svelte';
+import Input from './Input.svelte';
+export { AsideModal, InfiniteScroll, Input };

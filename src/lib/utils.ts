@@ -37,3 +37,4 @@ export const makeProjectGroupGridClass = (i: number, j: number) => {
 		return ' ';
 	}
 };
+

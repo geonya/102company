@@ -177,7 +177,7 @@
 							/>
 						</label>
 						<label for="inquiry-type" class="px-2 py-2">
-							<span class="text-xs">문의 종류</span>
+							<span class="text-xs">Category</span>
 							<select
 								class="block w-full appearance-none rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md focus:border-blue-500 focus:ring-blue-500"
 							>
@@ -189,7 +189,7 @@
 						</label>
 						<div class="col-span-2 -mt-1 px-2 py-2">
 							<label for="name" class="">
-								<span class="text-xs">Detail</span>
+								<span class="text-xs">Description</span>
 								<textarea
 									class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
 									id="name"
@@ -198,7 +198,7 @@
 							</label>
 							<div class="flex w-full justify-end">
 								<button
-									class="mt-2 rounded-md bg-base-800 bg-opacity-70 px-3 py-2 hover:bg-opacity-100"
+									class="mt-2 rounded-md bg-base-800 bg-opacity-70 px-3 py-2 text-xs hover:bg-opacity-100"
 								>
 									Submit
 								</button>
