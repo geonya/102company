@@ -14,6 +14,7 @@
 - [x] bg / hero image optimization
 - [x] About Page
 - [x] Projects Page Gallery Section
+- [ ] Seach Project Input
 - [ ] Each Project Page
 - [ ] Admin Page
 - [ ] Server/DB Setup

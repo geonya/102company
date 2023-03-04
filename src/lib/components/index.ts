@@ -1,4 +1,5 @@
 import AsideModal from './AsideModal.svelte';
 import InfiniteScroll from './InfiniteScroll.svelte';
 import Input from './Input.svelte';
-export { AsideModal, InfiniteScroll, Input };
+import Footer from './Footer.svelte';
+export { AsideModal, InfiniteScroll, Input, Footer };

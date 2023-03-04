@@ -12,12 +12,12 @@
 			class="absolute inset-0 z-10 flex h-full w-full flex-col items-start justify-end space-y-3 pl-10 pb-5 opacity-95"
 		>
 			<h1
-				class="text-md text-medium text-base-200 underline underline-offset-8"
+				class="text-md text-medium text-base-300 underline underline-offset-8"
 			>
 				새힘재활의학과 의원
 			</h1>
-			<h3 class="text-sm text-base-300">description...</h3>
-			<p class="text-xs text-base-300">This is our works!</p>
+			<h3 class="text-sm text-base-400">description...</h3>
+			<p class="text-xs text-base-400">This is our works!</p>
 		</div>
 		<div
 			style="background-image:url({photo});"
@@ -26,16 +26,21 @@
 			<div class="absolute inset-0 h-full w-full bg-base-800 opacity-50" />
 		</div>
 	</div>
-	<div
-		class="mx-auto grid max-w-6xl gap-5 px-5 md:grid-cols-2 md:gap-10 md:px-10"
-	>
+	<div class="mx-auto grid max-w-6xl px-5 md:gap-10 md:px-10 lg:grid-cols-2">
 		{#each photos as no}
-			<div class="w-full cursor-pointer snap-start">
+			<div
+				class="w-full cursor-pointer snap-start rounded-b-md pb-3 text-base-400"
+			>
 				<img
 					src={photo}
 					alt="project"
-					class="mx-auto min-h-max w-full rounded-md object-cover shadow-lg"
+					class="mx-auto mt-14 min-h-max w-full rounded-t-md object-cover shadow-lg"
 				/>
+				<div
+					class="h-12 w-full items-center rounded-b-xl bg-base-700 px-3 py-1 text-sm opacity-90"
+				>
+					<h3>This is just peace of work...</h3>
+				</div>
 			</div>
 		{/each}
 	</div>
