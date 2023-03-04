@@ -1,18 +1,14 @@
 <script lang="ts">
-	import { InifiniteScroll } from '$lib/components';
+	import { InfiniteScroll } from '$lib/components';
 	import { arrayOf2Groups, loadStaticImages } from '$lib/utils';
-	import { onDestroy, onMount } from 'svelte';
-	import { cubicInOut, elasticInOut } from 'svelte/easing';
-	import { element } from 'svelte/internal';
-	import { tweened } from 'svelte/motion';
+	import { onMount } from 'svelte';
+	import { cubicInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
 
-	let sectionElement: HTMLElement;
 	let page = 0;
 	let totalGroup = [];
 	let images: string[][] = [];
 	let newImages: string[][] = [];
-	let loading = false;
 
 	const fetchData = async (page: number) => {
 		const newData = arrayOf2Groups(await loadStaticImages('')).slice(
@@ -23,9 +19,7 @@
 	};
 
 	const handleLoadMore = async () => {
-		loading = true;
 		newImages = await fetchData(page);
-		loading = false;
 	};
 
 	$: images = [...images, ...newImages];
@@ -36,10 +30,7 @@
 	});
 </script>
 
-<section
-	bind:this={sectionElement}
-	class="h-screen snap-y snap-mandatory overflow-scroll"
->
+<section class="h-screen snap-y snap-mandatory overflow-scroll">
 	<div id="reponsibleWidthSet" class="mx-auto h-full xs:w-full md:max-w-7xl">
 		<article class="h-full min-h-screen w-full snap-start">
 			<div
@@ -88,7 +79,7 @@
 		</article>
 		{#each images as group, i}
 			<article
-				class={'relative grid h-full w-full snap-start grid-rows-2 py-20'}
+				class={'relative grid h-full w-full snap-start grid-rows-2 py-20 px-1'}
 				id="project{i}"
 			>
 				<div class={'absolute top-20' + (i % 2 === 0 ? ' right-5' : ' left-5')}>
@@ -96,7 +87,7 @@
 						class={'flex items-center rounded-md px-3 pt-2 opacity-50 hover:cursor-pointer hover:text-base-200 hover:opacity-100 ' +
 							(i % 2 === 1 ? ' flex-row-reverse' : ' flex-row')}
 					>
-						<div class="flex items-center xs:text-xs md:text-sm">
+						<div class="flex items-center xs:text-sm md:text-sm">
 							View Project
 						</div>
 						<div class="mx-1 grid place-content-center pb-1 pt-1.5">
@@ -128,10 +119,10 @@
 							easing: cubicInOut,
 						}}
 						for="clickBox{i + '-' + j}"
-						class={' row-span-1 grid h-full w-full cursor-pointer grid-cols-3 justify-items-center px-3 py-2'}
+						class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-3 items-center px-3 py-2'}
 					>
 						<div
-							class={'main-project-wrapper relative isolate col-span-2 h-full w-full max-w-[640px] overflow-hidden rounded-md' +
+							class={'main-project-wrapper relative isolate col-span-2 h-full max-h-[300px] w-full max-w-[600px] overflow-hidden rounded-md lg:max-h-[400px]' +
 								((j + i) % 2 === 0 ? ' col-start-1' : ' col-start-2 ')}
 							style=""
 						>
@@ -153,7 +144,7 @@
 			</article>
 		{/each}
 	</div>
-	<InifiniteScroll
+	<InfiniteScroll
 		elementScroll={null}
 		hasMore={newImages.length > 0}
 		threshold={100}

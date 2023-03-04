@@ -6,6 +6,7 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 	import { BAR_HEIGHT } from '$lib/constants';
+	import { Input } from '$lib/components';
 
 	let open = false;
 	let isFooterOpen = false;
@@ -59,9 +60,9 @@
 			class="grid h-full w-full grid-cols-3 items-center justify-items-center"
 		>
 			<ul class="" />
-			<ul class="">
+			<ul class="flex h-full items-center ">
 				<li>
-					<h2 class="font-regular text-sm">
+					<h2 class="font-regular text-md">
 						<a href="/">102 Company</a>
 					</h2>
 				</li>
@@ -149,15 +150,7 @@
 						</ol>
 					</li>
 					<li class="grid h-full w-full grid-flow-dense grid-cols-2">
-						<label for="name" class="px-2 py-2">
-							<span class="text-xs">Name</span>
-							<input
-								class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
-								type="text"
-								id="name"
-								name="name"
-							/>
-						</label>
+						<Input type="text" id="name" label="Name" />
 						<label for="email" class="px-2 py-2">
 							<span class="text-xs">Email</span>
 							<input
