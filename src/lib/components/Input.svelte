@@ -7,8 +7,10 @@
 	export let disabled = false;
 </script>
 
-<label for={id} class="px-2 py-2">
-	{#if label} <span class="mb-1 inline-block text-xs">{label}</span> {/if}
+<div class="p-1">
+	<label for={id} class="inline-block w-full pl-1">
+		{#if label} <span class="inline-block text-xs">{label}</span> {/if}
+	</label>
 	<input
 		class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
 		{type}
@@ -18,4 +20,4 @@
 		{required}
 		{disabled}
 	/>
-</label>
+</div>

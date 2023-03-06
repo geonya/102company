@@ -83,7 +83,7 @@
 				</li>
 			</ul>
 			<ul
-				class="grid h-full w-full px-5 pb-1 text-sm text-base-400 xs:grid-cols-1 lg:grid-cols-2"
+				class="grid h-full w-full px-5 pb-2 text-sm text-base-400 xs:grid-cols-1 lg:grid-cols-2"
 			>
 				<li class="self-center xs:hidden lg:block">
 					<ol class="">
@@ -110,26 +110,30 @@
 					<Input type="text" id="name" label="Name" />
 					<Input type="email" id="email" label="Email" />
 					<Input type="number" id="phone" label="Phone" />
-					<label for="inquiry-type" class="px-2 py-2">
-						<span class="text-xs">Category</span>
+					<div class="p-1">
+						<label for="inquiry-type" class="pl-1">
+							<span class="text-xs">Category</span>
+						</label>
 						<select
-							class=" mt-1 block w-full appearance-none rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md focus:border-blue-500 focus:ring-blue-500"
+							class="block w-full appearance-none rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md focus:border-blue-500 focus:ring-blue-500"
 						>
 							<option selected value="신축">신축</option>
 							<option value="리모델링">리모델링</option>
 							<option value="부분">부분</option>
 							<option value="기타">기타</option>
 						</select>
-					</label>
-					<div class="col-span-2 -mt-1 px-2 py-2">
-						<label for="name" class="">
-							<span class="text-xs">Description</span>
+					</div>
+					<div class="col-span-2">
+						<div class="px-1">
+							<label for="name" class="pl-1">
+								<span class="text-xs">Description</span>
+							</label>
 							<textarea
 								class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
 								id="description"
 								name="description"
 							/>
-						</label>
+						</div>
 						<div class="flex w-full justify-end">
 							<button
 								class="mt-2 rounded-md bg-base-800 bg-opacity-70 px-3 py-2 text-xs hover:bg-opacity-100"

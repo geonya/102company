@@ -8,6 +8,32 @@
 		id="hero"
 		class="relative mb-8 h-52 w-full snap-start overflow-hidden rounded-b-md bg-base-600 bg-cover bg-center bg-no-repeat shadow-lg md:h-52"
 	>
+		<a href="/projects">
+			<button
+				class="absolute right-32 top-24 z-20 flex cursor-pointer items-center rounded-md px-3 pt-2"
+			>
+				<div class="flex items-center text-base-200 hover:text-white">
+					View All Projects
+				</div>
+				<div class="mx-1 grid place-content-center pb-1 pt-1.5">
+					<svg
+						class=" h-5 w-5"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d={'M8.25 4.5l7.5 7.5-7.5 7.5'}
+						/>
+					</svg>
+				</div>
+			</button>
+		</a>
 		<div
 			class="absolute inset-0 z-10 flex h-full w-full flex-col items-start justify-end space-y-3 pl-10 pb-5 opacity-95"
 		>
