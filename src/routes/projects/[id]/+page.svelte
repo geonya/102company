@@ -26,20 +26,20 @@
 			<div class="absolute inset-0 h-full w-full bg-base-800 opacity-50" />
 		</div>
 	</div>
-	<div class="mx-auto grid max-w-6xl px-5 md:gap-10 md:px-10 lg:grid-cols-2">
+	<div class="mx-auto grid w-full max-w-4xl px-5 md:gap-10 md:px-10">
 		{#each photos as no}
 			<div
-				class="w-full cursor-pointer snap-start rounded-b-md pb-3 text-base-400"
+				class="w-full cursor-pointer snap-start rounded-b-md pb-3 text-base-400 first:-mt-16"
 			>
 				<img
 					src={photo}
 					alt="project"
-					class="mx-auto mt-14 min-h-max w-full rounded-t-md object-cover shadow-lg"
+					class="mx-auto mt-24 w-full rounded-t-md object-cover shadow-lg "
 				/>
 				<div
-					class="h-12 w-full items-center rounded-b-xl bg-base-700 px-3 py-1 text-sm opacity-90"
+					class="h-12 w-full items-center rounded-b-xl bg-base-700 px-3 py-1 text-sm opacity-80"
 				>
-					<h3>This is just peace of work...</h3>
+					<h3>This is just a peace of work...</h3>
 				</div>
 			</div>
 		{/each}

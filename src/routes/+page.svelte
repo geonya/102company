@@ -122,7 +122,7 @@
 							easing: cubicInOut,
 						}}
 						for="clickBox{i + '-' + j}"
-						class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-3 px-3 py-2 '}
+						class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-3 justify-items-center px-3 py-2 '}
 					>
 						<div
 							class={'main-project-wrapper relative isolate col-span-2 h-full max-h-[300px] w-full max-w-[600px] overflow-hidden rounded-md lg:max-h-[400px]' +

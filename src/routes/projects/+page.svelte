@@ -25,7 +25,7 @@
 		/>
 	</div>
 	<div
-		class="mx-auto grid grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-5"
+		class="mx-auto grid grid-cols-2 gap-5 lg:grid-cols-3 lg:gap-8"
 		id="projectsGallery"
 	>
 		{#each mockWorks as work}
