@@ -45,8 +45,8 @@
 >
 	<footer
 		bind:this={footerElement}
-		class={'rounded-md backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
-			(isFooterOpen ? ' bg-opacity-90' : '')}
+		class={'rounded-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
+			(isFooterOpen ? ' backdrop-blur-lg' : ' bg-base-700')}
 	>
 		<nav class="h-full w-full items-center">
 			<ul
