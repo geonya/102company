@@ -18,7 +18,7 @@
 	{#if photo}
 		<div
 			id="hero"
-			class="relative mb-3 flex h-40 w-full snap-start items-center overflow-hidden rounded-b-md bg-base-600 bg-cover bg-center bg-no-repeat shadow-lg md:h-52"
+			class="relative mb-7 flex h-40 w-full snap-start items-center overflow-hidden rounded-b-md bg-base-600 bg-cover bg-center bg-no-repeat shadow-lg md:h-52"
 		>
 			<div class="z-10 flex h-full w-full items-end justify-between px-5 pb-6">
 				<h1
