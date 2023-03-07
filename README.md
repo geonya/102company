@@ -17,5 +17,6 @@
 - [x] Seach Project Input
 - [x] Each Project Page
 - [x] Contact Page
+- [ ] Responsive Layout Fix
 - [ ] Admin Page
 - [ ] Server/DB Setup

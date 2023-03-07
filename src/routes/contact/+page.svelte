@@ -2,11 +2,10 @@
 	import { Input } from '$lib/components';
 </script>
 
-<div class="relative h-full min-h-screen w-full">
-	<div
-		class="absolute top-1/2 left-1/2 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 px-3 lg:px-0"
-		id="contactCard"
-	>
+<div
+	class="relative grid h-full min-h-screen w-full place-content-center overflow-scroll py-16"
+>
+	<div class="w-full max-w-xl overflow-scroll px-3 lg:px-0" id="contactCard">
 		<div
 			class="h-full w-full rounded-md bg-base-700 bg-opacity-90 p-3 shadow-lg"
 		>

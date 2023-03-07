@@ -45,7 +45,7 @@
 >
 	<footer
 		bind:this={footerElement}
-		class={'rounded-md bg-base-600 backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
+		class={'rounded-md backdrop-blur-md transition delay-100 duration-500 ease-in-out hover:shadow-md' +
 			(isFooterOpen ? ' bg-opacity-90' : '')}
 	>
 		<nav class="h-full w-full items-center">
@@ -83,7 +83,7 @@
 				</li>
 			</ul>
 			<ul
-				class="grid h-full w-full px-5 pb-2 text-sm text-base-400 xs:grid-cols-1 lg:grid-cols-2"
+				class="grid h-full w-full px-5 pb-1 text-sm text-base-400 xs:grid-cols-1 lg:grid-cols-2"
 			>
 				<li class="self-center xs:hidden lg:block">
 					<ol class="">
@@ -112,10 +112,10 @@
 					<Input type="number" id="phone" label="Phone" />
 					<div class="p-1">
 						<label for="inquiry-type" class="pl-1">
-							<span class="text-xs">Category</span>
+							<span class="text-xs">Category1</span>
 						</label>
 						<select
-							class="block w-full appearance-none rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md focus:border-blue-500 focus:ring-blue-500"
+							class="block w-full appearance-none rounded-md bg-base-800 px-2 py-1 text-sm text-base-100 opacity-60 shadow-md focus:border-blue-500 focus:ring-blue-500 md:py-2"
 						>
 							<option selected value="신축">신축</option>
 							<option value="리모델링">리모델링</option>

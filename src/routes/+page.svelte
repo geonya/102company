@@ -1,40 +1,40 @@
 <script lang="ts">
 	import { InfiniteScroll } from '$lib/components';
-	import { arrayOf2Groups, loadStaticImages } from '$lib/utils';
+	import { photos } from '$lib/store';
+	import type { Photo } from '$lib/type';
+	import { arrayOf2Groups } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import { cubicInOut } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
+	import type { LayoutServerData } from './$types';
+
+	export let data: LayoutServerData;
 
 	let page = 0;
-	let totalGroup = [];
-	let images: string[][] = [];
-	let newImages: string[][] = [];
+	let totalPhotos: Photo[] = [];
+	let imageGroups: Photo[][] = [];
 
-	const fetchData = async (page: number) => {
-		const newData = arrayOf2Groups(await loadStaticImages('')).slice(
-			page,
-			page + 1,
-		);
-		return newData;
+	$: totalPhotos = $photos;
+	$: imageGroups = [
+		...imageGroups,
+		...arrayOf2Groups(slicePhotos(page, totalPhotos)),
+	];
+
+	const slicePhotos = (page: number, photos: Photo[]) => {
+		return photos.slice(page, page + 2);
 	};
 
-	const handleLoadMore = async () => {
-		newImages = await fetchData(page);
-	};
-
-	$: images = [...images, ...newImages];
-
-	onMount(async () => {
-		totalGroup = arrayOf2Groups(await loadStaticImages(''));
-		newImages = totalGroup.slice(0, 1);
+	onMount(() => {
+		totalPhotos = data.photos;
+		imageGroups = arrayOf2Groups(slicePhotos(0, totalPhotos));
 	});
 </script>
 
-<section class="h-screen snap-y snap-mandatory overflow-scroll">
+<section class="h-screen overflow-scroll">
 	<div id="reponsibleWidthSet" class="mx-auto h-full xs:w-full md:max-w-7xl">
-		<article class="h-full min-h-screen w-full snap-start">
+		<article class="h-full min-h-screen w-full ">
 			<div
-				class="relative rounded-md bg-base-600 bg-cover bg-center bg-no-repeat opacity-90 bg-blend-overlay "
+				class="relative rounded-sm bg-base-600 bg-cover bg-center bg-no-repeat opacity-90 bg-blend-overlay "
 				style="background-image:url(/hero2.jpg)"
 			>
 				<div
@@ -78,18 +78,18 @@
 			</div>
 		</article>
 		<!-- Project Images -->
-		{#each images as group, i}
+		{#each imageGroups as group, i}
 			<article
-				class={'relative grid h-full w-full snap-start grid-rows-2 py-20 px-1'}
+				class={'relative grid h-full w-full grid-rows-2 py-20 px-1'}
 				id="project{i}"
 			>
-				<div class={'absolute top-32' + (i % 2 === 0 ? ' right-5' : ' left-5')}>
-					<a href="/projects/1">
+				<div class={'absolute top-11' + (i % 2 === 0 ? ' right-2' : ' left-2')}>
+					<a href="/projects">
 						<button
-							class={'flex items-center rounded-md px-3 pt-2 opacity-60 hover:cursor-pointer hover:text-base-200 hover:opacity-95 ' +
+							class={'flex items-center rounded-sm px-3 pt-2 opacity-60 hover:cursor-pointer hover:text-base-200 hover:opacity-95 ' +
 								(i % 2 === 1 ? ' flex-row-reverse' : ' flex-row')}
 						>
-							<div class="flex items-center xs:text-sm md:text-sm">
+							<div class="flex items-center text-xs md:text-sm">
 								View Project
 							</div>
 							<div class="mx-1 grid place-content-center pb-1 pt-1.5">
@@ -125,7 +125,7 @@
 						class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-3 justify-items-center px-3 py-2 '}
 					>
 						<div
-							class={'main-project-wrapper relative isolate col-span-2 h-full max-h-[300px] w-full max-w-[600px] overflow-hidden rounded-md lg:max-h-[400px]' +
+							class={'main-project-wrapper relative isolate col-span-2 h-full max-h-[300px] w-full max-w-[600px] overflow-hidden rounded-sm lg:max-h-[400px]' +
 								((j + i) % 2 === 0 ? ' col-start-1 ' : ' col-start-2 ') +
 								(j % 2 ? ' self-start' : ' self-end')}
 							style=""
@@ -137,10 +137,10 @@
 								hidden
 							/>
 							<div
-								class={'main-project-image absolute top-0 bottom-0 right-0 left-0 m-auto grid h-full w-full transform place-content-center rounded-md bg-base-500 bg-opacity-70 bg-cover bg-center bg-no-repeat bg-blend-darken transition-all duration-500 ease-in-out hover:bg-blend-normal focus:bg-blend-normal'}
-								style="background-image:url({image})"
+								class={'main-project-image absolute top-0 bottom-0 right-0 left-0 m-auto grid h-full w-full transform place-content-center rounded-sm bg-base-500 bg-cover bg-center bg-no-repeat transition-all duration-500 ease-in-out '}
+								style="background-image:url({image.download_url})"
 							>
-								<h3 class="main-project-title">Title</h3>
+								<h3 class="main-project-title">{image.author}</h3>
 							</div>
 						</div>
 					</label>
@@ -150,11 +150,10 @@
 	</div>
 	<InfiniteScroll
 		elementScroll={null}
-		hasMore={newImages.length > 0}
+		hasMore={imageGroups.length > 0}
 		threshold={100}
 		on:loadmore={() => {
 			page++;
-			handleLoadMore();
 		}}
 	/>
 </section>

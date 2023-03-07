@@ -15,7 +15,7 @@
 	>
 		<nav class="grid h-full w-full place-items-center">
 			<ul
-				class="grid grid-flow-row justify-items-center gap-32 text-lg font-light tracking-widest"
+				class="grid grid-flow-row justify-items-center gap-5 text-sm font-light tracking-widest md:text-lg"
 			>
 				<li><a href="/">Home</a></li>
 				<li><a href="/about">About</a></li>
@@ -24,7 +24,7 @@
 			</ul>
 		</nav>
 		<button class="absolute top-2 left-2 p-3" on:click={handleExitButtonClick}>
-			<Icon src={X} class="h-7 w-7" />
+			<Icon src={X} class=" h-5 w-5 md:h-7 md:w-7" />
 		</button>
 	</aside>
 	<div

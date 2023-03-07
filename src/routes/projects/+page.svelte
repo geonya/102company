@@ -1,33 +1,25 @@
 <script lang="ts">
 	import { cubicInOut } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
+	import { photos } from '$lib/store';
 
-	interface Work {
-		title: string;
-		image: string;
-		description: string;
-		createdAt: string;
-	}
 	let searchBarWidth = tweened(200, {
 		duration: 500,
 		easing: cubicInOut,
 	});
-	const mockWorks = new Array(10);
-	const mockWork: Work = {
-		title: 'Work1',
-		image: 'https://picsum.photos/400/300',
-		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-		createdAt: '23.03.04',
-	};
 	const onSearchBarClick = () => {
-		searchBarWidth.set(300);
+		searchBarWidth.set(250);
 	};
 	const onSearchBlur = () => {
 		searchBarWidth.set(200);
 	};
 </script>
 
-<div id="projectwrapper" class="mx-auto h-full w-full max-w-7xl px-5 py-12">
+<div
+	id="projectwrapper"
+	class="mx-auto h-screen w-full max-w-7xl overflow-scroll md:px-3"
+>
+	<div class="h-8 " />
 	<div
 		id="projectHeader"
 		class="my-4 flex h-20 w-full items-center justify-between"
@@ -54,30 +46,59 @@
 			>
 		</button>
 	</div>
-	<div
-		class="mx-auto grid grid-cols-2 gap-5 lg:grid-cols-3 lg:gap-8"
-		id="projectsGallery"
-	>
-		{#each mockWorks as work}
-			<a href="/projects/1">
-				<div
-					id="projectWrapper"
-					class="cursor-pointer overflow-hidden rounded-md bg-base-700 bg-opacity-90 shadow-lg transition-all duration-500 hover:bg-base-600"
-				>
-					<img src={mockWork.image} alt={mockWork.title} class="object-cover" />
-					<div class="p-2 px-3">
-						<h3 class="font-regular my-1 text-sm font-medium">
-							{mockWork.title}
-						</h3>
-						<p class="text-sm font-light">{mockWork.description}</p>
-						<div class="w-full">
-							<span class="inline-block w-full text-end text-xs text-base-400"
-								>{mockWork.createdAt}</span
-							>
+	<div class="mx-auto grid gap-3 lg:grid-cols-2" id="projectsGallery">
+		{#if $photos && $photos.length > 0}
+			{#each $photos as photo, i}
+				<a href="/projects/{photo.id}" class="">
+					<div
+						id="projectWrapper"
+						class="cursor-pointer overflow-hidden rounded-md shadow-lg backdrop-blur transition-all duration-500 hover:bg-base-600"
+					>
+						<img
+							src={photo.download_url}
+							alt={photo.id}
+							class="w-full object-cover"
+						/>
+						<div class="p-2 px-3">
+							<h3 class="font-regular my-1 text-sm font-medium">
+								{photo.author}
+							</h3>
+							<p class="text-sm font-light">{photo.author}</p>
+							<div class="w-full">
+								<span class="inline-block w-full text-end text-xs text-base-400"
+									>{photo.width}</span
+								>
+							</div>
 						</div>
 					</div>
-				</div>
-			</a>
-		{/each}
+				</a>
+			{/each}
+		{/if}
 	</div>
+	<div class="h-8" />
+	<a href="/" class="z-20 flex w-full justify-end">
+		<button class="flex cursor-pointer items-center rounded-md px-3 pt-2">
+			<div class="flex items-center text-base-200 hover:text-white">
+				Go Home
+			</div>
+			<div class="mx-1 grid place-content-center pb-1 pt-1.5">
+				<svg
+					class=" h-5 w-5"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d={'M8.25 4.5l7.5 7.5-7.5 7.5'}
+					/>
+				</svg>
+			</div>
+		</button>
+	</a>
+	<div class="h-16" />
 </div>

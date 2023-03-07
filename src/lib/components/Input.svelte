@@ -12,7 +12,7 @@
 		{#if label} <span class="inline-block text-xs">{label}</span> {/if}
 	</label>
 	<input
-		class="w-full rounded-md bg-base-800 px-3 py-2 text-sm text-base-100 opacity-60 shadow-md"
+		class="w-full rounded-md bg-base-800 px-3 py-1 text-sm text-base-100 opacity-60 shadow-md sm:py-2"
 		{type}
 		{id}
 		name={id}

@@ -1,73 +1,77 @@
 <script lang="ts">
-	const photos = new Array(10);
-	const photo = 'https://picsum.photos/400/300';
+	import { page } from '$app/stores';
+	import { photos } from '$lib/store';
+	import type { Photo } from '$lib/type';
+	import { onMount } from 'svelte';
+	let photo: Photo | undefined;
+	onMount(() => {
+		const photoId = $page.params.id;
+		if (photoId) {
+			photo = $photos.find((photo) => photo.id === photoId);
+		}
+	});
 </script>
 
-<div class="h-full max-h-screen w-full snap-y snap-mandatory overflow-scroll">
-	<div
-		id="hero"
-		class="relative mb-8 h-52 w-full snap-start overflow-hidden rounded-b-md bg-base-600 bg-cover bg-center bg-no-repeat shadow-lg md:h-52"
-	>
-		<a href="/projects">
-			<button
-				class="absolute right-32 top-24 z-20 flex cursor-pointer items-center rounded-md px-3 pt-2"
-			>
-				<div class="flex items-center text-base-200 hover:text-white">
-					View All Projects
-				</div>
-				<div class="mx-1 grid place-content-center pb-1 pt-1.5">
-					<svg
-						class=" h-5 w-5"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1.5"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-						aria-hidden="true"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d={'M8.25 4.5l7.5 7.5-7.5 7.5'}
-						/>
-					</svg>
-				</div>
-			</button>
-		</a>
+<div
+	class="h-full max-h-screen min-h-screen w-full snap-y snap-mandatory overflow-scroll"
+>
+	{#if photo}
 		<div
-			class="absolute inset-0 z-10 flex h-full w-full flex-col items-start justify-end space-y-3 pl-10 pb-5 opacity-95"
+			id="hero"
+			class="relative mb-3 flex h-40 w-full snap-start items-center overflow-hidden rounded-b-md bg-base-600 bg-cover bg-center bg-no-repeat shadow-lg md:h-52"
 		>
-			<h1
-				class="text-md text-medium text-base-300 underline underline-offset-8"
-			>
-				새힘재활의학과 의원
-			</h1>
-			<h3 class="text-sm text-base-400">description...</h3>
-			<p class="text-xs text-base-400">This is our works!</p>
-		</div>
-		<div
-			style="background-image:url({photo});"
-			class="absolute inset-0 z-0 h-full w-full rounded-b-md bg-cover bg-center bg-no-repeat bg-blend-overlay"
-		>
-			<div class="absolute inset-0 h-full w-full bg-base-800 opacity-50" />
-		</div>
-	</div>
-	<div class="mx-auto grid w-full max-w-4xl px-5 md:gap-10 md:px-10">
-		{#each photos as no}
-			<div
-				class="w-full cursor-pointer snap-start rounded-b-md pb-3 text-base-400 first:-mt-16"
-			>
-				<img
-					src={photo}
-					alt="project"
-					class="mx-auto mt-24 w-full rounded-t-md object-cover shadow-lg "
-				/>
-				<div
-					class="h-12 w-full items-center rounded-b-xl bg-base-700 px-3 py-1 text-sm opacity-80"
+			<div class="z-10 flex h-full w-full items-end justify-between px-5 pb-6">
+				<h1
+					class="text-medium text-md text-base-300 underline underline-offset-8 md:text-lg"
 				>
-					<h3>This is just a peace of work...</h3>
+					새힘재활의학과 의원
+				</h1>
+				<div>
+					<h3 class="text-sm text-base-400 md:text-sm">description...</h3>
+					<p class="text-xs text-base-400">This is our works!</p>
 				</div>
 			</div>
-		{/each}
-	</div>
+			<div
+				style="background-image:url({photo.download_url});"
+				class="absolute inset-0 z-0 h-full w-full rounded-b-md bg-cover bg-center bg-no-repeat bg-blend-overlay blur-sm"
+			/>
+		</div>
+		<div class="mx-auto grid w-full max-w-4xl gap-3 md:px-3">
+			{#each $photos as photo}
+				<div class="w-full cursor-pointer rounded-b-md text-base-400 ">
+					<img
+						src={photo.download_url}
+						alt="project"
+						class="mt-15 mx-auto w-full snap-center rounded-t-md object-cover shadow-lg"
+					/>
+				</div>
+			{/each}
+			<div class="h-8" />
+			<a href="/projects" class="z-20 flex w-full justify-end">
+				<button class="flex cursor-pointer items-center rounded-md px-3 pt-2">
+					<div class="flex items-center text-base-200 hover:text-white">
+						View more projects
+					</div>
+					<div class="mx-1 grid place-content-center pb-1 pt-1.5">
+						<svg
+							class=" h-5 w-5"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d={'M8.25 4.5l7.5 7.5-7.5 7.5'}
+							/>
+						</svg>
+					</div>
+				</button>
+			</a>
+			<div class="h-20" />
+		</div>
+	{/if}
 </div>
