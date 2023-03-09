@@ -9,7 +9,6 @@
 		duration: 400,
 		easing: cubicInOut,
 	});
-	let screenHeight: number;
 	let footerHeight: number;
 	let footerElement: HTMLElement;
 	let isFooterOpen = false;
@@ -31,7 +30,6 @@
 
 <!-- Kakaotalk inapp browser footer modal bug -->
 <svelte:window
-	bind:innerHeight={screenHeight}
 	on:resize={() => {
 		if (isFooterOpen) {
 			handleFooterToggle();
