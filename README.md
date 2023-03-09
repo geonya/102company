@@ -17,6 +17,7 @@
 - [x] Seach Project Input
 - [x] Each Project Page
 - [x] Contact Page
-- [ ] Responsive Layout Fix
+- [x] Responsive Layout Fix
+- [x] Mobile footer bug
 - [ ] Admin Page
 - [ ] Server/DB Setup
