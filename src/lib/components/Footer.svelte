@@ -28,11 +28,12 @@
 	});
 </script>
 
-<!-- Kakaotalk inapp browser footer modal bug -->
 <svelte:window
 	on:resize={() => {
 		if (isFooterOpen) {
-			handleFooterToggle();
+			footerTop.set(0);
+		} else {
+			footerTop.set(-footerHeight + BAR_HEIGHT);
 		}
 	}}
 />
