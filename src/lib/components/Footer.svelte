@@ -5,7 +5,7 @@
 	import { tweened } from 'svelte/motion';
 	import { Input } from '.';
 
-	$: footerTop = tweened(screenHeight - BAR_HEIGHT, {
+	$: footerTop = tweened(-footerHeight + BAR_HEIGHT, {
 		duration: 400,
 		easing: cubicInOut,
 	});
@@ -15,10 +15,10 @@
 	let isFooterOpen = false;
 	const handleFooterToggle = () => {
 		if (isFooterOpen) {
-			footerTop.set(screenHeight - BAR_HEIGHT);
+			footerTop.set(-footerHeight + BAR_HEIGHT);
 			isFooterOpen = false;
 		} else {
-			footerTop.set(screenHeight - footerHeight);
+			footerTop.set(0);
 			isFooterOpen = true;
 		}
 	};
@@ -29,6 +29,7 @@
 	});
 </script>
 
+<!-- Kakaotalk inapp browser footer modal bug -->
 <svelte:window
 	bind:innerHeight={screenHeight}
 	on:resize={() => {
@@ -40,8 +41,8 @@
 
 <div
 	id="footerWrapper"
-	class="fixed left-0 h-full w-full cursor-pointer rounded-md "
-	style="top: {$footerTop}px"
+	class="sticky left-0 w-full cursor-pointer rounded-md "
+	style="bottom: {$footerTop}px"
 >
 	<footer
 		bind:this={footerElement}
