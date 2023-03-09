@@ -31,16 +31,14 @@
 <svelte:window
 	on:resize={() => {
 		if (isFooterOpen) {
-			footerTop.set(0);
-		} else {
-			footerTop.set(-footerHeight + BAR_HEIGHT);
+			handleFooterToggle();
 		}
 	}}
 />
 
 <div
 	id="footerWrapper"
-	class="sticky left-0 w-full cursor-pointer rounded-md "
+	class="fixed left-0 w-full cursor-pointer rounded-md "
 	style="bottom: {$footerTop}px"
 >
 	<footer
