@@ -80,7 +80,7 @@
 		<!-- Project Images -->
 		{#each imageGroups as group, i}
 			<article
-				class={'relative mx-auto grid h-full w-full grid-rows-2 border py-20 xs:w-full md:max-w-6xl'}
+				class={'relative mx-auto grid h-full w-full grid-rows-2 py-20 xs:w-full md:max-w-6xl'}
 				id="project{i}"
 			>
 				<div class={'absolute top-11' + (i % 2 === 0 ? ' right-2' : ' left-2')}>
