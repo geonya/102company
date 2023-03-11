@@ -48,7 +48,7 @@
 			{/each}
 			<div class="h-8" />
 			<a href="/projects" class="z-20 flex w-full justify-end">
-				<button class="flex cursor-pointer items-center rounded-md px-3 pt-2">
+				<button class="flex cursor-pointer items-center rounded-sm px-3 pt-2">
 					<div class="flex items-center text-base-200 hover:text-white">
 						View more projects
 					</div>

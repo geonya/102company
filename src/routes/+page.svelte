@@ -31,8 +31,8 @@
 </script>
 
 <section class="h-screen overflow-scroll">
-	<div id="reponsibleWidthSet" class="mx-auto h-full xs:w-full md:max-w-7xl">
-		<article class="h-full min-h-screen w-full ">
+	<div id="reponsibleWidthSet" class="mx-auto h-full w-full">
+		<!-- <article class="h-full min-h-screen w-full ">
 			<div
 				class="relative rounded-sm bg-base-600 bg-cover bg-center bg-no-repeat opacity-90 bg-blend-overlay "
 				style="background-image:url(/hero2.jpg)"
@@ -76,16 +76,17 @@
 					</div>
 				</div>
 			</div>
-		</article>
+		</article> -->
 		<!-- Project Images -->
 		{#each imageGroups as group, i}
 			<article
-				class={'relative grid h-full w-full grid-rows-2 py-20 px-1'}
+				class={'relative mx-auto grid h-full w-full grid-rows-2 border py-20 xs:w-full md:max-w-6xl'}
 				id="project{i}"
 			>
 				<div class={'absolute top-11' + (i % 2 === 0 ? ' right-2' : ' left-2')}>
 					<a href="/projects">
 						<button
+							id="ViewProjectButton"
 							class={'flex items-center rounded-sm px-3 pt-2 opacity-60 hover:cursor-pointer hover:text-base-200 hover:opacity-95 ' +
 								(i % 2 === 1 ? ' flex-row-reverse' : ' flex-row')}
 						>
@@ -122,10 +123,10 @@
 							easing: cubicInOut,
 						}}
 						for="clickBox{i + '-' + j}"
-						class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-3 justify-items-center px-3 py-2 '}
+						class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-2 justify-items-center gap-1 '}
 					>
 						<div
-							class={'main-project-wrapper relative isolate col-span-2 h-full max-h-[300px] w-full max-w-[600px] overflow-hidden rounded-sm lg:max-h-[400px]' +
+							class={'main-project-wrapper relative isolate col-span-1 h-full w-full overflow-hidden rounded-sm ' +
 								((j + i) % 2 === 0 ? ' col-start-1 ' : ' col-start-2 ') +
 								(j % 2 ? ' self-start' : ' self-end')}
 							style=""

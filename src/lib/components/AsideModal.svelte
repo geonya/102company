@@ -11,7 +11,7 @@
 {#if open}
 	<aside
 		transition:fade
-		class="fixed top-0 right-0 bottom-0 z-30 w-1/2 max-w-xs bg-base-900 opacity-95 shadow-lg"
+		class="bg-base-900 fixed top-0 right-0 bottom-0 z-30 w-1/2 max-w-xs opacity-95 shadow-lg"
 	>
 		<nav class="grid h-full w-full place-items-center">
 			<ul

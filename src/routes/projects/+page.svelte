@@ -25,7 +25,7 @@
 			<h2 class="text-md ml-5 font-light text-white">Out Works</h2>
 			<button class="relative" on:click={onSearchBarClick}>
 				<input
-					class="w-full rounded-md bg-base-600 px-2 py-1.5 pl-8 text-xs text-base-100 opacity-60 shadow-md hover:bg-base-700"
+					class="w-full rounded-sm bg-base-600 px-2 py-1.5 pl-8 text-xs text-base-100 opacity-60 shadow-md hover:bg-base-700"
 					type="text"
 					id="search"
 					name="search"
@@ -50,7 +50,7 @@
 					<a href="/projects/{photo.id}" class="">
 						<div
 							id="projectWrapper"
-							class="cursor-pointer overflow-hidden rounded-md shadow-lg backdrop-blur transition-all duration-500 hover:bg-base-600"
+							class="cursor-pointer overflow-hidden rounded-sm shadow-lg backdrop-blur transition-all duration-500 hover:bg-base-600"
 						>
 							<img
 								src={photo.download_url}
