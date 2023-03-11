@@ -19,5 +19,7 @@
 - [x] Contact Page
 - [x] Responsive Layout Fix
 - [x] Mobile footer bug
+- [ ] Main Page Grid
+- [ ] About Page Layout / Animation
 - [ ] Admin Page
 - [ ] Server/DB Setup
