@@ -42,12 +42,12 @@
 				>
 					<div />
 					<div class="space-y-10">
-						<h1 class="text-4xl">
+						<h1 class="text-3xl md:text-4xl">
 							하나의 <strong class="font-semibold">공간</strong>, 하나의
 							<strong class="font-semibold">이해</strong>
 						</h1>
 
-						<p class="text-base font-light">
+						<p class=" font-light md:text-base">
 							Without active listening skills and taking the time to address
 							concerns when they arise, projects can veer off the tracks rather
 							quickly. I have learned that my most successful projects have
@@ -98,7 +98,7 @@
 				class={'relative mx-auto grid h-full w-full grid-rows-2 py-20 xs:w-full md:max-w-6xl'}
 				id="project{i}"
 			>
-				<div class={'absolute top-11' + (i % 2 === 0 ? ' right-2' : ' left-2')}>
+				<div class={'absolute top-9' + (i % 2 === 0 ? ' right-2' : ' left-2')}>
 					<a href="/projects">
 						<button
 							id="ViewProjectButton"
@@ -141,8 +141,8 @@
 						class={'row-span-1 grid h-full w-full cursor-pointer grid-cols-2 justify-items-center gap-1 '}
 					>
 						<div
-							class={'main-project-wrapper relative isolate col-span-1 h-full w-full overflow-hidden rounded-sm ' +
-								((j + i) % 2 === 0 ? ' col-start-1 ' : ' col-start-2 ') +
+							class={'main-project-wrapper relative isolate col-span-2 h-full w-full overflow-hidden rounded-sm md:col-span-1 ' +
+								((j + i) % 2 === 0 ? ' col-start-1 ' : ' md:col-start-2 ') +
 								(j % 2 ? ' self-start' : ' self-end')}
 							style=""
 						>
