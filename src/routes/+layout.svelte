@@ -30,7 +30,7 @@
 			<ul class="" />
 			<ul class="flex h-full items-center ">
 				<li>
-					<h2 class="font-regular sm:text-md text-sm text-base-100 md:text-lg">
+					<h2 class="font-regular sm:text-md text-sm text-base-400 md:text-lg">
 						<a href="/">102 Company</a>
 					</h2>
 				</li>

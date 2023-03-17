@@ -32,27 +32,42 @@
 
 <section class="h-screen overflow-scroll">
 	<div id="reponsibleWidthSet" class="mx-auto h-full w-full">
-		<!-- <article class="h-full min-h-screen w-full ">
+		<article class="h-full min-h-screen w-full ">
 			<div
-				class="relative rounded-sm bg-base-600 bg-cover bg-center bg-no-repeat opacity-90 bg-blend-overlay "
+				class="relative bg-cover bg-center bg-no-repeat"
 				style="background-image:url(/hero2.jpg)"
 			>
 				<div
-					class="flex h-full min-h-screen w-full flex-col justify-between px-5 py-24"
+					class="mx-auto flex h-full min-h-screen max-w-xl flex-col justify-between px-5 py-24"
 				>
 					<div />
 					<div class="space-y-10">
-						<h1 class="font-regular text-3xl">Lorem Ipsum</h1>
+						<h1 class="text-4xl">
+							하나의 <strong class="font-semibold">공간</strong>, 하나의
+							<strong class="font-semibold">이해</strong>
+						</h1>
 
-						<p class="text-sm font-light">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-							reprehenderit in voluptate velit esse cillum dolore eu fugiat
-							nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-							sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<p class="text-base font-light">
+							Without active listening skills and taking the time to address
+							concerns when they arise, projects can veer off the tracks rather
+							quickly. I have learned that my most successful projects have
+							always been the ones where the clients and I stayed on the same
+							page together, every step of the way.
 						</p>
+					</div>
+					<div class="flex justify-around">
+						<a href="/about">
+							<button
+								class="rounded-sm border border-base-400 px-2 py-1 hover:bg-base-300 hover:text-base-600"
+								>Our Story</button
+							></a
+						>
+						<a href="/projects">
+							<button
+								class="rounded-sm border border-base-400 px-2 py-1 hover:bg-base-300 hover:text-base-600"
+								>Our Projects</button
+							></a
+						>
 					</div>
 
 					<div class="flex h-full w-full items-end justify-center">
@@ -76,7 +91,7 @@
 					</div>
 				</div>
 			</div>
-		</article> -->
+		</article>
 		<!-- Project Images -->
 		{#each imageGroups as group, i}
 			<article
