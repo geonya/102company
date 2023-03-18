@@ -1,5 +1,6 @@
-import type { PageServerLoad } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
+import { getCompressedImage } from '$lib/utils';
 
 export const load: PageServerLoad = ({ locals }) => {
 	if (!locals.pb.authStore.isValid || !locals.user) {
@@ -10,4 +11,26 @@ export const load: PageServerLoad = ({ locals }) => {
 			user: locals.user,
 		},
 	};
+};
+
+export const actions: Actions = {
+	create: async ({ locals, request }) => {
+		const body = await request.formData();
+		const title = body.get('title') as string;
+		const files = body.getAll('photos') as File[];
+		const formData = new FormData();
+		formData.append('title', title);
+		for (const file of files) {
+			const compressedFile = await getCompressedImage(file);
+			if (compressedFile) {
+				formData.append('photos', compressedFile);
+			}
+		}
+		try {
+			await locals.pb.collection('projects').create(formData);
+		} catch (err: any) {
+			console.error(err);
+			throw error(err.status, err.message);
+		}
+	},
 };
