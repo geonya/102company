@@ -2,7 +2,7 @@ import Pocketbase from 'pocketbase';
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	event.locals.pb = new Pocketbase('http://127.0.0.1:8090');
+	event.locals.pb = new Pocketbase('https://102company-back.fly.dev/');
 	const response = await resolve(event);
 	return response;
 };
