@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon, X } from 'svelte-hero-icons';
+	import { Cog, Icon, X } from 'svelte-hero-icons';
 	import { fade } from 'svelte/transition';
 	export let open: boolean;
 
@@ -26,6 +26,14 @@
 		<button class="absolute top-2 left-2 p-3" on:click={handleExitButtonClick}>
 			<Icon src={X} class=" h-5 w-5 md:h-7 md:w-7" />
 		</button>
+		<a href="/login">
+			<button
+				class="absolute bottom-2 right-2 p-3"
+				on:click={handleExitButtonClick}
+			>
+				<Icon src={Cog} class=" h-3 w-3 md:h-4 md:w-4" />
+			</button></a
+		>
 	</aside>
 	<div
 		class=" fixed top-0 left-0 h-screen w-full"

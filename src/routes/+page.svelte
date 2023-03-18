@@ -42,7 +42,7 @@
 				>
 					<div />
 					<div class="space-y-10">
-						<h1 class="text-3xl md:text-4xl">
+						<h1 class="text-3xl text-base-600 md:text-4xl">
 							하나의 <strong class="font-semibold">공간</strong>, 하나의
 							<strong class="font-semibold">이해</strong>
 						</h1>

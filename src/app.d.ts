@@ -6,6 +6,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			pb: PocketBase;
+			user: any;
 		}
 		// interface PageData {}
 		// interface Platform {}

@@ -71,8 +71,8 @@
 				contentElement5.style.transform = `translateX(0px)`;
 			}
 		}
-		if (scrollTop > scrollRange * 8) {
-			const range = scrollRange * 8;
+		if (scrollTop > scrollRange * 7) {
+			const range = scrollRange * 7;
 			let scale = 0 + ((scrollTop - range) / range) * 400;
 
 			contentElement6.style.transform = `translateX(${scale - 400}px})`;
@@ -92,11 +92,11 @@
 	on:scroll={onScroll}
 >
 	<div
-		class="flex flex-col items-center bg-cover bg-center bg-no-repeat py-24"
+		class="flex flex-col items-center bg-cover bg-center bg-no-repeat py-60"
 		style="background-image:url('/bg.jpg');"
 	>
 		<div
-			class="mx-auto mt-36 mb-24 flex w-full flex-col items-center justify-center duration-1000 ease-in-out"
+			class="mx-auto flex h-screen w-full flex-col items-center justify-center duration-1000 ease-in-out"
 			style="transform:scale(1);"
 			bind:this={headerElement}
 		>
@@ -106,7 +106,7 @@
 				102 Company
 			</h2>
 			<h3 class="text-xl">하나의 공간, 하나의 이해</h3>
-			<img src="/hero.jpg" alt="" class=" my-12 h-auto w-2/3 rounded-sm" />
+			<!-- <img src="/hero.jpg" alt="" class=" my-12 h-auto w-2/3 rounded-sm" /> -->
 		</div>
 		<div
 			class="mb-12 flex flex-col items-center justify-center rounded-sm bg-base-800 bg-opacity-70 py-12 opacity-0 transition-all duration-1000 ease-in-out"
@@ -127,11 +127,11 @@
 			</p>
 		</div>
 		<div
-			class="mb-12 flex flex-col items-center justify-center opacity-20 transition-all duration-1000 ease-in-out"
+			class="mb-12 flex h-72 flex-col items-center justify-center opacity-20 transition-all duration-1000 ease-in-out"
 			style="transform:scale(0.2); transform-origin:bottom left;"
 			bind:this={contentElement2}
 		>
-			<img src="/hero.jpg" alt="" class="h-auto w-2/3 rounded-sm" />
+			<!-- <img src="/hero.jpg" alt="" class="h-auto w-2/3 rounded-sm" /> -->
 		</div>
 		<div
 			class="mb-12 flex flex-col items-center justify-center opacity-20 transition-all duration-1000 ease-in-out"

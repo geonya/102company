@@ -27,7 +27,9 @@
 		<nav
 			class="grid h-full w-full grid-cols-3 items-center justify-items-center"
 		>
-			<ul class="" />
+			<ul class="">
+				{data?.user?.id}
+			</ul>
 			<ul class="flex h-full items-center ">
 				<li>
 					<h2 class="font-regular sm:text-md text-sm text-base-400 md:text-lg">
