@@ -11,16 +11,16 @@
 {#if open}
 	<aside
 		transition:fade
-		class="bg-base-900 fixed top-0 right-0 bottom-0 z-30 w-1/2 max-w-xs opacity-95 shadow-lg"
+		class="fixed top-0 right-0 bottom-0 z-30 w-1/2 max-w-xs bg-base-900 opacity-95 shadow-lg"
 	>
 		<nav class="grid h-full w-full place-items-center">
 			<ul
-				class="grid grid-flow-row justify-items-center gap-5 text-sm font-light tracking-widest md:text-lg"
+				class="grid grid-flow-row justify-items-center gap-10 text-sm font-light tracking-widest md:text-lg"
 			>
-				<li><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/projects">Projects</a></li>
-				<li><a href="/contact">Contact</a></li>
+				<li class="hover:text-base-300"><a href="/">Home</a></li>
+				<li class="hover:text-base-300"><a href="/about">About</a></li>
+				<li class="hover:text-base-300"><a href="/projects">Projects</a></li>
+				<li class="hover:text-base-300"><a href="/contact">Contact</a></li>
 			</ul>
 		</nav>
 		<button class="absolute top-2 left-2 p-3" on:click={handleExitButtonClick}>
