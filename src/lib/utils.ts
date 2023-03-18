@@ -1,4 +1,5 @@
 import imageCompression from 'browser-image-compression';
+import sharp from 'sharp';
 export const loadStaticImages = async (filter?: string) => {
 	let images: string[] = [];
 	const modules = import.meta.glob('/static/*.jpg');
@@ -45,18 +46,30 @@ export const getPhotoData = (url: string) => {
 	return urlData;
 };
 
-export async function getCompressedImage(file: File) {
-	const options = {
-		maxSizeMB: 1,
-		maxWidthOrHeight: 1920,
-		useWebWorker: true,
-	};
-	try {
-		console.log(file instanceof Blob);
-		const compressedFile = await imageCompression(file, options);
-		console.log(compressedFile);
-		return compressedFile;
-	} catch (error) {
-		console.log(error);
+async function contraintImage(
+	buffer: Uint8Array,
+	quality = 82,
+	drop = 2,
+): Promise<Uint8Array> {
+	const compressedBuffer = await sharp(buffer).jpeg({ quality }).toBuffer();
+	if (compressedBuffer.byteLength > 2000000) {
+		return await contraintImage(compressedBuffer, quality - drop);
 	}
+	return compressedBuffer;
+}
+
+export async function getCompressedImages(files: File[]) {
+	return await Promise.all(
+		files.map(async (file: File) => {
+			const buffer = await file.arrayBuffer();
+			const typedBuffer = new Uint8Array(buffer);
+			const compressedBuffer = await contraintImage(typedBuffer);
+			const compressedBlob = new Blob([compressedBuffer], {
+				type: 'image/jpeg',
+			});
+			return new File([compressedBlob], file.name, {
+				type: 'image/jpeg',
+			});
+		}),
+	);
 }

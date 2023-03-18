@@ -19,6 +19,7 @@
 		"@sveltejs/kit": "^1.5.0",
 		"@types/browser-image-compression": "^1.0.9",
 		"@types/imagemin": "^8.0.1",
+		"@types/sharp": "^0.31.1",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.7",
@@ -43,6 +44,7 @@
 	"type": "module",
 	"dependencies": {
 		"browser-image-compression": "^2.0.2",
-		"pocketbase": "0.13.0-rc"
+		"pocketbase": "0.13.0-rc",
+		"sharp": "^0.31.3"
 	}
 }
