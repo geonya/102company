@@ -2,8 +2,16 @@
 	import Dropzone from '$lib/components/Dropzone.svelte';
 	import Input from '$lib/components/Input.svelte';
 	import type { PageServerData } from './$types';
-
 	export let data: PageServerData;
+	let addedFiles: File[] = [];
+
+	let imageUrlList: string[] = [];
+
+	function createImageUrl(files: File[]) {
+		return files.map((file) => URL.createObjectURL(file));
+	}
+
+	$: imageUrlList = createImageUrl(addedFiles);
 </script>
 
 <div class="mx-auto h-screen max-w-lg py-24">
@@ -26,7 +34,7 @@
 			/>
 		</div>
 		<div class="mt-2 px-1">
-			<Dropzone />
+			<Dropzone bind:addedFiles />
 		</div>
 		<div class="inline-flex w-full justify-end">
 			<button
@@ -39,11 +47,10 @@
 
 	<div>
 		<h1 class="text-center">Contacts</h1>
-		<!-- {#each data?.props?.projects as project}
+		{#each imageUrlList as url}
 			<div class="flex flex-col items-center justify-center">
-				<h1>{project.title}</h1>
-				<h1>{project.description}</h1>
+				<img src={url} alt="" class="h-64 w-64" />
 			</div>
-		{/each} -->
+		{/each}
 	</div>
 </div>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	let inputElement: HTMLInputElement;
-	let selectedFiles: File[];
+	export let addedFiles: File[];
 
 	function createFileList(files: File[]) {
 		const dataTransfer = new DataTransfer();
@@ -35,7 +35,7 @@
 	) {
 		const files = event.currentTarget.files;
 		if (files) {
-			console.log(files);
+			addedFiles = Array.from(files);
 		}
 	}
 </script>
@@ -71,6 +71,7 @@
 		</div>
 		<input
 			id="photos"
+			name="photos"
 			type="file"
 			multiple
 			accept="image/*"

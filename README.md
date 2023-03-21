@@ -29,3 +29,4 @@
 - [x] project title upload test
 - [x] project description test
 - [ ] image upload list
+  - [ ] Drag n Drop input 
