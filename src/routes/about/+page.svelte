@@ -71,8 +71,8 @@
 				contentElement5.style.transform = `translateX(0px)`;
 			}
 		}
-		if (scrollTop > scrollRange * 7.5) {
-			const range = scrollRange * 7.5;
+		if (scrollTop > scrollRange * 7) {
+			const range = scrollRange * 7;
 			let scale = 0 + ((scrollTop - range) / range) * 400;
 
 			contentElement6.style.transform = `translateX(${scale - 400}px})`;
@@ -92,7 +92,7 @@
 	on:scroll={onScroll}
 >
 	<div
-		class="flex flex-col items-center bg-cover bg-center bg-no-repeat py-60"
+		class="flex flex-col items-center bg-cover bg-center bg-no-repeat py-80"
 		style="background-image:url('/bg.jpg');"
 	>
 		<div

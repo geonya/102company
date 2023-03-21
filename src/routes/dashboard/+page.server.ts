@@ -18,14 +18,15 @@ export const actions: Actions = {
 		const body = await request.formData();
 		const title = body.get('title') as string;
 		const files = body.getAll('photos') as File[];
+		const description = body.get('description') as string;
 		const formData = new FormData();
 		formData.append('title', title);
-		// const getCompressedFiles = await getCompressedImages(files);
-		// getCompressedFiles.forEach((file) => {
-		// 	formData.append('photos', file);
-		// });
-
+		formData.append('description', description);
 		try {
+			const getCompressedFiles = await getCompressedImages(files);
+			getCompressedFiles.forEach((file) => {
+				formData.append('photos', file);
+			});
 			await locals.pb.collection('projects').create(formData);
 		} catch (err: any) {
 			console.error(err);

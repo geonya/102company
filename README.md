@@ -20,8 +20,12 @@
 - [x] Responsive Layout Fix
 - [x] Mobile footer bug
 - [x] Main Page Grid
+- [x] Server/DB Setup : PocketBase
 - [x] Error : process is not defined
   - Dynamic import
 - [x] footer blur impact fix
 - [x] header user id fix
-- [ ] Server/DB Setup
+- [x] image upload test
+- [x] project title upload test
+- [x] project description test
+- [ ] image upload list

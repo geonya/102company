@@ -44,6 +44,7 @@
 	"type": "module",
 	"dependencies": {
 		"browser-image-compression": "^2.0.2",
+		"file-selector": "^0.6.0",
 		"pocketbase": "0.13.0-rc",
 		"sharp": "^0.31.3"
 	}
