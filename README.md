@@ -23,6 +23,5 @@
 - [x] Error : process is not defined
   - Dynamic import
 - [x] footer blur impact fix
-- [ ] About Page Layout / Animation
-- [ ] Admin Page
+- [x] header user id fix
 - [ ] Server/DB Setup

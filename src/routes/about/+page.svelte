@@ -14,7 +14,7 @@
 	let clientHeight = 0;
 
 	function onScroll(e: UIEvent) {
-		const scrollRange = clientHeight / 3.5;
+		const scrollRange = clientHeight / 3;
 		scrollTop = aboutWrapper.scrollTop;
 		scrollHeight = aboutWrapper.scrollHeight;
 		console.log(scrollTop, scrollRange);
@@ -71,8 +71,8 @@
 				contentElement5.style.transform = `translateX(0px)`;
 			}
 		}
-		if (scrollTop > scrollRange * 7) {
-			const range = scrollRange * 7;
+		if (scrollTop > scrollRange * 7.5) {
+			const range = scrollRange * 7.5;
 			let scale = 0 + ((scrollTop - range) / range) * 400;
 
 			contentElement6.style.transform = `translateX(${scale - 400}px})`;

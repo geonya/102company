@@ -28,7 +28,7 @@
 			class="grid h-full w-full grid-cols-3 items-center justify-items-center"
 		>
 			<ul class="">
-				{data?.user?.id}
+				{data?.user?.id ?? ''}
 			</ul>
 			<ul class="flex h-full items-center ">
 				<li>
