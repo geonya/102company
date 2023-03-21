@@ -14,7 +14,7 @@
 	$: imageUrlList = createImageUrl(addedFiles);
 </script>
 
-<div class="mx-auto h-screen max-w-lg py-24">
+<div class="mx-auto max-w-lg py-24">
 	<h1 class="">
 		ID :: {data?.props?.user?.name}
 	</h1>
@@ -36,6 +36,13 @@
 		<div class="mt-2 px-1">
 			<Dropzone bind:addedFiles />
 		</div>
+		<div class="grid w-full grid-cols-3">
+			{#each imageUrlList as url}
+				<div class="flex flex-col items-center justify-center">
+					<img src={url} alt="" class="object-cover" />
+				</div>
+			{/each}
+		</div>
 		<div class="inline-flex w-full justify-end">
 			<button
 				type="submit"
@@ -44,13 +51,4 @@
 			>
 		</div>
 	</form>
-
-	<div>
-		<h1 class="text-center">Contacts</h1>
-		{#each imageUrlList as url}
-			<div class="flex flex-col items-center justify-center">
-				<img src={url} alt="" class="h-64 w-64" />
-			</div>
-		{/each}
-	</div>
 </div>

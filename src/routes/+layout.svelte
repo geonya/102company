@@ -19,7 +19,7 @@
 	});
 </script>
 
-<div class="bg-fixed bg-left" style="background-image:url(/bg.jpg)">
+<div class="h-full bg-fixed bg-left" style="background-image:url(/bg.jpg)">
 	<header
 		class="fixed top-0 left-0 right-0 z-30 bg-clip-content shadow-sm backdrop-blur-md"
 		style="height: {BAR_HEIGHT}px"

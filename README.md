@@ -28,5 +28,6 @@
 - [x] image upload test
 - [x] project title upload test
 - [x] project description test
-- [ ] image upload list
-  - [ ] Drag n Drop input 
+- [x] image upload list
+  - [x] Drag n Drop input
+  - [x] image preview
