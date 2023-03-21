@@ -19,7 +19,10 @@
 - [x] Contact Page
 - [x] Responsive Layout Fix
 - [x] Mobile footer bug
-- [ ] Main Page Grid
+- [x] Main Page Grid
+- [x] Error : process is not defined
+  - Dynamic import
+- [ ] 
 - [ ] About Page Layout / Animation
 - [ ] Admin Page
 - [ ] Server/DB Setup

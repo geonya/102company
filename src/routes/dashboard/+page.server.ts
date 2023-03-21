@@ -1,7 +1,6 @@
 import type { Actions, PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import { getCompressedImages } from '$lib/utils';
-import sharp from 'sharp';
 
 export const load: PageServerLoad = ({ locals }) => {
 	if (!locals.pb.authStore.isValid || !locals.user) {
@@ -21,10 +20,10 @@ export const actions: Actions = {
 		const files = body.getAll('photos') as File[];
 		const formData = new FormData();
 		formData.append('title', title);
-		const getCompressedFiles = await getCompressedImages(files);
-		getCompressedFiles.forEach((file) => {
-			formData.append('photos', file);
-		});
+		// const getCompressedFiles = await getCompressedImages(files);
+		// getCompressedFiles.forEach((file) => {
+		// 	formData.append('photos', file);
+		// });
 
 		try {
 			await locals.pb.collection('projects').create(formData);
