@@ -22,7 +22,7 @@
 - [x] Main Page Grid
 - [x] Error : process is not defined
   - Dynamic import
-- [ ] 
+- [x] footer blur impact fix
 - [ ] About Page Layout / Animation
 - [ ] Admin Page
 - [ ] Server/DB Setup
